@@ -1,0 +1,633 @@
+variables
+{
+	global:
+		0: Front_1
+		1: Front_2
+		2: Front_3
+		3: Front_4
+		4: Front_5
+		5: Front_6
+		6: Front_7
+		7: Front_8
+		8: Front_9
+		9: Left_1
+		10: Left_2
+		11: Left_3
+		12: Left_4
+		13: Left_5
+		14: Left_6
+		15: Left_7
+		16: Left_8
+		17: Left_9
+		18: Down_1
+		19: Down_2
+		20: Down_3
+		21: Down_4
+		22: Down_5
+		23: Down_6
+		26: Down_9
+		36: Up_1
+		37: Up_2
+		38: Up_3
+		39: Up_4
+		54: gravity_counter
+}
+
+subroutines
+{
+	0: Front
+	1: Right
+	2: Up
+	3: Back
+	4: Left
+	5: Down
+}
+
+disabled rule("X,Y,Z")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	conditions
+	{
+		"should hopefully prevent weirdness outside of the game? idunno"
+		Is Game In Progress == True;
+	}
+
+	actions
+	{
+		"add an orb of some color"
+		Create Effect(All Players(All Teams), Sphere, Color(White), Vector(15, 5, 8), 1, Visible To Position and Radius);
+		"add an orb of some color"
+		Create Effect(All Players(All Teams), Sphere, Color(Red), Vector(19, 5, 8), 1, Visible To Position and Radius);
+		"add an orb of some color"
+		Create Effect(All Players(All Teams), Sphere, Color(Red), Vector(17, 5, 8), 1, Visible To Position and Radius);
+		"add an orb of some color"
+		Create Effect(All Players(All Teams), Sphere, Color(Green), Vector(15, 7, 8), 1, Visible To Position and Radius);
+		"add an orb of some color"
+		Create Effect(All Players(All Teams), Sphere, Color(Green), Vector(15, 9, 8), 1, Visible To Position and Radius);
+		"add an orb of some color"
+		Create Effect(All Players(All Teams), Sphere, Color(Blue), Vector(15, 5, 10), 1, Visible To Position and Radius);
+		"add an orb of some color"
+		Create Effect(All Players(All Teams), Sphere, Color(Blue), Vector(15, 5, 12), 1, Visible To Position and Radius);
+	}
+}
+
+rule("teleport players to starting location")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Has Spawned(Event Player) == True;
+	}
+
+	actions
+	{
+		Teleport(All Players(Team 1), Vector(15.500, 17, 1));
+	}
+}
+
+rule("START try 3x3x3 full - create the colors, and cube like shape")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	conditions
+	{
+		Is Game In Progress == True;
+	}
+
+	actions
+	{
+		"DUMMIES - FRONT BOT"
+		Create Dummy Bot(Hero(Doomfist), Team 2, 0, Vector(0.293, 8.203, 2.032), Vector(0, 0, 0));
+		"RIGHT BOT"
+		Create Dummy Bot(Hero(Roadhog), Team 2, 1, Vector(-3.640, 8.541, -1.094), Vector(0, 0, 0));
+		"UP BOT"
+		Create Dummy Bot(Hero(Junker Queen), Team 2, 2, Vector(-4.113, 11.788, 1.956), Vector(0, 0, 0));
+		"BACK BOT"
+		Create Dummy Bot(Hero(Bastion), Team 2, 3, Vector(-7.518, 8.798, 1.957), Vector(0, 0, 0));
+		"LEFT BOT"
+		Create Dummy Bot(Hero(Lifeweaver), Team 2, 4, Vector(-3.604, 8.120, 5.084), Vector(0, 0, 0));
+		"DOWN BOT"
+		Create Dummy Bot(Hero(D.Va), Team 2, 5, Vector(-4.034, 5.304, 2.086), Vector(0, 0, 0));
+		"rename"
+		Start Forcing Dummy Bot Name(All Players(Team 2)[0], Custom String("FRONT"));
+		Start Forcing Dummy Bot Name(All Players(Team 2)[1], Custom String("RIGHT"));
+		Start Forcing Dummy Bot Name(All Players(Team 2)[2], Custom String("UP"));
+		Start Forcing Dummy Bot Name(All Players(Team 2)[3], Custom String("BACK"));
+		Start Forcing Dummy Bot Name(All Players(Team 2)[4], Custom String("LEFT"));
+		Start Forcing Dummy Bot Name(All Players(Team 2)[5], Custom String("DOWN"));
+		"DUMMIES - FRONT INVERSE"
+		Create Dummy Bot(Hero(Ana), Team 2, 6, Vector(15.135, 2.500, -3.790), Vector(0, 0, 0));
+		"RIGHT INVERSE BOT"
+		Create Dummy Bot(Hero(Reinhardt), Team 2, 7, Vector(15.202, 2.500, 0.005), Vector(0, 0, 0));
+		"UP INVERSE"
+		Create Dummy Bot(Hero(Junkrat), Team 2, 8, Vector(14.877, 2.477, 3.986), Vector(0, 0, 0));
+		"BACK INVERSE"
+		Create Dummy Bot(Hero(Baptiste), Team 2, 9, Vector(14.958, 2.483, 8.100), Vector(0, 0, 0));
+		"LEFT INVERSE"
+		Create Dummy Bot(Hero(Lúcio), Team 2, 10, Vector(14.950, 2.477, 11.418), Vector(0, 0, 0));
+		"DOWN INVERSE"
+		Create Dummy Bot(Hero(Widowmaker), Team 2, 11, Vector(14.950, 2.480, 15.423), Vector(0, 0, 0));
+		"rename"
+		Start Forcing Dummy Bot Name(All Players(Team 2)[6], Custom String("FRONT INVERSE"));
+		Start Forcing Dummy Bot Name(All Players(Team 2)[7], Custom String("RIGHT INVERSE"));
+		Start Forcing Dummy Bot Name(All Players(Team 2)[8], Custom String("UP INVERSE"));
+		Start Forcing Dummy Bot Name(All Players(Team 2)[9], Custom String("BACK INVERSE"));
+		Start Forcing Dummy Bot Name(All Players(Team 2)[10], Custom String("LEFT INVERSE"));
+		Start Forcing Dummy Bot Name(All Players(Team 2)[11], Custom String("DOWN INVERSE"));
+		"for each bot, make gravity 0"
+		For Global Variable(gravity_counter, 0, Count Of(All Players(Team 2)), 1);
+			Set Gravity(All Players(Team 2)[Global.gravity_counter], 0);
+		End;
+	
+		"white"
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 12, -25), Vector(0, 13, -25), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 12, -24.950), Vector(0, 12, -25.650), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 13, -24.950), Vector(0, 13, -25.650), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 12, -25.600), Vector(0, 13, -25.600), Color(White),
+			Visible To Position and Radius);
+		"white 4"
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10.500, -25.200), Vector(0, 11.500, -25.200), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10.500, -25.400), Vector(0, 11.500, -25.400), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10.500, -25.600), Vector(0, 11.500, -25.600), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10.500, -25), Vector(0, 11.500, -25), Color(White),
+			Visible To Position and Radius);
+		"white 7"
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 9, -25), Vector(0, 10, -25), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 9, -25.400), Vector(0, 10, -25.400), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 9, -25.200), Vector(0, 10, -25.200), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 9, -25.600), Vector(0, 10, -25.600), Color(White),
+			Visible To Position and Radius);
+		"white 2"
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 12, -26), Vector(0, 13, -26), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 12, -26.200), Vector(0, 13, -26.200), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 12, -26.400), Vector(0, 13, -26.400), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 12, -26.600), Vector(0, 13, -26.600), Color(White),
+			Visible To Position and Radius);
+		"white 5"
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10.500, -26), Vector(0, 11.500, -26), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10.500, -26.600), Vector(0, 11.500, -26.600), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10.500, -26), Vector(0, 10.500, -26.600), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 11.500, -26), Vector(0, 11.500, -26.600), Color(White),
+			Visible To Position and Radius);
+		"white 8"
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 9, -26), Vector(0, 10, -26), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 9, -26.200), Vector(0, 10, -26.200), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 9, -26.400), Vector(0, 10, -26.400), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 9, -26.600), Vector(0, 10, -26.600), Color(White),
+			Visible To Position and Radius);
+		"white 3"
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 12, -27), Vector(0, 13, -27), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 12, -27.200), Vector(0, 13, -27.200), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 12, -27.400), Vector(0, 13, -27.400), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 12, -27.600), Vector(0, 13, -27.600), Color(White),
+			Visible To Position and Radius);
+		"white 6"
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10.500, -27), Vector(0, 11.500, -27), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10.500, -27.200), Vector(0, 11.500, -27.200), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10.500, -27.400), Vector(0, 11.500, -27.400), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10.500, -27.600), Vector(0, 11.500, -27.600), Color(White),
+			Visible To Position and Radius);
+		"white 9"
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 9, -27), Vector(0, 10, -27), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 9, -27.200), Vector(0, 10, -27.200), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 9, -27.400), Vector(0, 10, -27.400), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 9, -27.600), Vector(0, 10, -27.600), Color(White),
+			Visible To Position and Radius);
+		"blue 39"
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(-0.200, 13, -25), Vector(-1.200, 13, -25), Color(Blue),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(-0.200, 13, -25), Vector(-0.200, 13, -25.600), Color(Blue),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(-1.200, 13, -25), Vector(-1.200, 13, -25.600), Color(Blue),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(-0.200, 13, -25.600), Vector(-1.200, 13, -25.600), Color(Blue),
+			Visible To Position and Radius);
+		"ORANGE10"
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(-0.200, 9, -24.600), Vector(-1.200, 9, -24.600), Color(Orange),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(-0.200, 10, -24.600), Vector(-1.200, 10, -24.600), Color(Orange),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(-1.200, 9, -24.600), Vector(-1.200, 10, -24.600), Color(Orange),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(-0.200, 9, -24.600), Vector(-0.200, 10, -24.600), Color(Orange),
+			Visible To Position and Radius);
+	}
+}
+
+rule("player starts")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		"run once when spawned in"
+		Has Spawned(Event Player) == True;
+	}
+
+	actions
+	{
+		Set Gravity(Event Player, 0);
+		disabled Set Move Speed(Event Player, 70);
+	}
+}
+
+rule("Heros for subroutines")
+{
+	event
+	{
+		Player Died;
+		All;
+		All;
+	}
+
+	actions
+	{
+		"FRONT TURN - DOOMFIST"
+		If(Event Player == Players On Hero(Hero(Doomfist), Team 2));
+			Create HUD Text(All Players(All Teams), Custom String("Turn Front"), Null, Null, Left, 0, Color(White), Color(White), Color(White),
+				Visible To and String, Default Visibility);
+			Call Subroutine(Front);
+			Wait(1.200, Ignore Condition);
+			Teleport(Event Player, Vector(3.521, 0, -0.607));
+		"RIGHT TURN - ROADHOG"
+		Else If(Event Player == Players On Hero(Hero(Roadhog), Team 2));
+			Create HUD Text(All Players(All Teams), Custom String("TURN RIGHT"), Null, Null, Left, 0, Color(Red), Color(White), Color(White),
+				Visible To and String, Default Visibility);
+			Call Subroutine(Right);
+			Wait(1.200, Ignore Condition);
+			Teleport(Event Player, Vector(-3.798, 0, -3.070));
+		"UP TURN - JUNKERQUEEN"
+		Else If(Event Player == Players On Hero(Hero(Junker Queen), Team 2));
+			Create HUD Text(All Players(All Teams), Custom String("TURN UP"), Null, Null, Left, 0, Color(Blue), Color(White), Color(White),
+				Visible To and String, Default Visibility);
+			Call Subroutine(Up);
+			Wait(1.200, Ignore Condition);
+			Teleport(Event Player, Vector(3, 11.500, 1));
+		"BACK TURN - BASTION"
+		Else If(Event Player == Players On Hero(Hero(Bastion), Team 2));
+			Create HUD Text(All Players(All Teams), Custom String("TURN BACK"), Null, Null, Left, 0, Color(Black), Color(White), Color(White),
+				Visible To and String, Default Visibility);
+			Call Subroutine(Back);
+			Wait(1.200, Ignore Condition);
+			Teleport(Event Player, Vector(-8, 1, 0));
+		"LEFT TURN - LIFEWEAVER"
+		Else If(Event Player == Players On Hero(Hero(Lifeweaver), Team 2));
+			Create HUD Text(All Players(All Teams), Custom String("TURN LEFT"), Null, Null, Left, 0, Color(Orange), Color(White), Color(White),
+				Visible To and String, Default Visibility);
+			Call Subroutine(Left);
+			Wait(1.200, Ignore Condition);
+			Teleport(Event Player, Vector(-2.500, 0.200, 6));
+		"DOWN TURN - DVA"
+		Else If(Event Player == Players On Hero(Hero(D.Va), Team 2));
+			Create HUD Text(All Players(All Teams), Custom String("TURN DOWN"), Null, Null, Left, 0, Color(Green), Color(White), Color(White),
+				Visible To and String, Default Visibility);
+			Call Subroutine(Down);
+			Wait(1.200, Ignore Condition);
+			Teleport(Event Player, Vector(-3, 0.200, 1));
+		"RIGHT INVERSE - REINHARDT"
+		Else If(Event Player == Players On Hero(Hero(Reinhardt), Team 2));
+			Create HUD Text(All Players(All Teams), Custom String("TURN RIGHT INVERSE"), Null, Null, Left, 0, Color(Red), Color(White), Color(
+				White), Visible To and String, Default Visibility);
+			Call Subroutine(Right);
+			Call Subroutine(Right);
+			Call Subroutine(Right);
+			Wait(1.200, Ignore Condition);
+			Teleport(Event Player, Vector(15, 2.500, 0));
+	}
+}
+
+rule("give ult charge if its at 0")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Ultimate Charge Percent(Event Player) <= 99;
+	}
+
+	actions
+	{
+		disabled If(Ultimate Charge Percent(Event Player) <= 99);
+		Set Ultimate Charge(Event Player, 100);
+	}
+}
+
+rule("Front turn - subroutine")
+{
+	event
+	{
+		Subroutine;
+		Front;
+	}
+
+	actions
+	{
+		"front face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Left_8);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Left_9);
+		Global.Up_3 = Index Of Array Value(Global.Down_9, Global.Down_2);
+		Global.Up_4 = Index Of Array Value(Global.Down_9, Global.Down_1);
+		Global.Down_9[Global.Up_1] += Vector(0, 0, -4);
+		Global.Down_9[Global.Up_2] += Vector(0, -4, 0);
+		Global.Down_9[Global.Up_3] += Vector(0, 0, 4);
+		Global.Down_9[Global.Up_4] += Vector(0, 4, 0);
+		"setup right face"
+		Global.Up_3 = Index Of Array Value(Global.Down_9, Global.Front_1);
+		Global.Up_4 = Index Of Array Value(Global.Down_9, Global.Front_2);
+		"up face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Front_9);
+		Global.Down_9[Global.Up_1] += Vector(0, -6, -2);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Left_1);
+		Global.Down_9[Global.Up_2] += Vector(0, -2, -6);
+		"left face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Front_5);
+		Global.Down_9[Global.Up_1] += Vector(0, 2, -6);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Front_6);
+		Global.Down_9[Global.Up_2] += Vector(0, 6, -2);
+		"down face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Left_4);
+		Global.Down_9[Global.Up_1] += Vector(0, 6, 2);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Left_5);
+		Global.Down_9[Global.Up_2] += Vector(0, 2, 6);
+		"right turn"
+		Global.Down_9[Global.Up_3] += Vector(0, -2, 6);
+		Global.Down_9[Global.Up_4] += Vector(0, -6, 2);
+		Create HUD Text(All Players(All Teams), Custom String("FRONT DONE"), Null, Null, Left, 0, Color(Gray), Color(White), Color(White),
+			Visible To and String, Default Visibility);
+	}
+}
+
+rule("Right turn - subroutine")
+{
+	event
+	{
+		Subroutine;
+		Right;
+	}
+
+	actions
+	{
+		"right face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Front_1);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Front_2);
+		Global.Up_3 = Index Of Array Value(Global.Down_9, Global.Front_3);
+		Global.Up_4 = Index Of Array Value(Global.Down_9, Global.Front_4);
+		Global.Down_9[Global.Up_1] += Vector(0, 4, 0);
+		Global.Down_9[Global.Up_2] += Vector(-4, 0, 0);
+		Global.Down_9[Global.Up_4] += Vector(0, -4, 0);
+		Global.Down_9[Global.Up_3] += Vector(4, 0, 0);
+		"setup top face"
+		Global.Up_3 = Index Of Array Value(Global.Down_9, Global.Front_9);
+		Global.Up_4 = Index Of Array Value(Global.Down_9, Global.Left_2);
+		"front face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Left_9);
+		Global.Down_9[Global.Up_1] += Vector(-6, 2, 0);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Down_2);
+		Global.Down_9[Global.Up_2] += Vector(-2, 6, 0);
+		"down face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Left_5);
+		Global.Down_9[Global.Up_1] += Vector(2, 6, 0);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Left_7);
+		Global.Down_9[Global.Up_2] += Vector(6, 2, 0);
+		"back face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Down_4);
+		Global.Down_9[Global.Up_1] += Vector(6, -2, 0);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Down_6);
+		Global.Down_9[Global.Up_2] += Vector(2, -6, 0);
+		"front turn"
+		Global.Down_9[Global.Up_3] += Vector(-6, -2, 0);
+		Global.Down_9[Global.Up_4] += Vector(-2, -6, 0);
+		Create HUD Text(All Players(All Teams), Custom String("RIGHT DONE"), Null, Null, Left, 0, Color(Gray), Color(White), Color(White),
+			Visible To and String, Default Visibility);
+	}
+}
+
+rule("Up turn - subroutine")
+{
+	event
+	{
+		Subroutine;
+		Up;
+	}
+
+	actions
+	{
+		"right face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Front_9);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Left_1);
+		Global.Up_3 = Index Of Array Value(Global.Down_9, Global.Left_2);
+		Global.Up_4 = Index Of Array Value(Global.Down_9, Global.Left_3);
+		Global.Down_9[Global.Up_1] += Vector(0, 0, 4);
+		Global.Down_9[Global.Up_2] += Vector(-4, 0, 0);
+		Global.Down_9[Global.Up_4] += Vector(0, 0, -4);
+		Global.Down_9[Global.Up_3] += Vector(4, 0, 0);
+		"setup FRONT face"
+		Global.Up_3 = Index Of Array Value(Global.Down_9, Global.Left_8);
+		Global.Up_4 = Index Of Array Value(Global.Down_9, Global.Left_9);
+		"RIGHT face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Front_2);
+		Global.Down_9[Global.Up_1] += Vector(2, 0, 6);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Front_4);
+		Global.Down_9[Global.Up_2] += Vector(6, 0, 2);
+		"BACK face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Down_6);
+		Global.Down_9[Global.Up_1] += Vector(6, 0, -2);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Down_5);
+		Global.Down_9[Global.Up_2] += Vector(2, 0, -6);
+		"left face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Front_7);
+		Global.Down_9[Global.Up_1] += Vector(-2, 0, -6);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Front_5);
+		Global.Down_9[Global.Up_2] += Vector(-6, 0, -2);
+		"front turn"
+		Global.Down_9[Global.Up_3] += Vector(-6, 0, 2);
+		Global.Down_9[Global.Up_4] += Vector(-2, 0, 6);
+		Create HUD Text(All Players(All Teams), Custom String("UP DONE"), Null, Null, Left, 0, Color(Gray), Color(White), Color(White),
+			Visible To and String, Default Visibility);
+	}
+}
+
+rule("Back turn - subroutine")
+{
+	event
+	{
+		Subroutine;
+		Back;
+	}
+
+	actions
+	{
+		"front face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Down_3);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Down_4);
+		Global.Up_3 = Index Of Array Value(Global.Down_9, Global.Down_5);
+		Global.Up_4 = Index Of Array Value(Global.Down_9, Global.Down_6);
+		Global.Down_9[Global.Up_1] += Vector(0, 0, -4);
+		Global.Down_9[Global.Up_2] += Vector(0, 4, 0);
+		Global.Down_9[Global.Up_4] += Vector(0, 0, 4);
+		Global.Down_9[Global.Up_3] += Vector(0, -4, 0);
+		"setup right face"
+		Global.Up_3 = Index Of Array Value(Global.Down_9, Global.Front_3);
+		Global.Up_4 = Index Of Array Value(Global.Down_9, Global.Front_4);
+		"down face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Left_6);
+		Global.Down_9[Global.Up_1] += Vector(0, 2, -6);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Left_7);
+		Global.Down_9[Global.Up_2] += Vector(0, 6, -2);
+		"left face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Front_7);
+		Global.Down_9[Global.Up_1] += Vector(0, -6, -2);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Front_8);
+		Global.Down_9[Global.Up_2] += Vector(0, -2, -6);
+		"up face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Left_2);
+		Global.Down_9[Global.Up_1] += Vector(0, -2, 6);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Left_3);
+		Global.Down_9[Global.Up_2] += Vector(0, -6, 2);
+		"back turn"
+		Global.Down_9[Global.Up_3] += Vector(0, 6, 2);
+		Global.Down_9[Global.Up_4] += Vector(0, 2, 6);
+		Create HUD Text(All Players(All Teams), Custom String("BACK DONE"), Null, Null, Left, 0, Color(Black), Color(White), Color(White),
+			Visible To and String, Default Visibility);
+	}
+}
+
+rule("Left turn - subroutine")
+{
+	event
+	{
+		Subroutine;
+		Left;
+	}
+
+	actions
+	{
+		"left face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Front_5);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Front_6);
+		Global.Up_3 = Index Of Array Value(Global.Down_9, Global.Front_7);
+		Global.Up_4 = Index Of Array Value(Global.Down_9, Global.Front_8);
+		Global.Down_9[Global.Up_1] += Vector(0, -4, 0);
+		Global.Down_9[Global.Up_2] += Vector(-4, 0, 0);
+		Global.Down_9[Global.Up_4] += Vector(0, 4, 0);
+		Global.Down_9[Global.Up_3] += Vector(4, 0, 0);
+		"setup top face"
+		Global.Up_3 = Index Of Array Value(Global.Down_9, Global.Left_1);
+		Global.Up_4 = Index Of Array Value(Global.Down_9, Global.Left_3);
+		"back face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Down_3);
+		Global.Down_9[Global.Up_1] += Vector(2, 6, 0);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Down_5);
+		Global.Down_9[Global.Up_2] += Vector(6, 2, 0);
+		"down face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Left_4);
+		Global.Down_9[Global.Up_1] += Vector(-6, 2, 0);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Left_6);
+		Global.Down_9[Global.Up_2] += Vector(-2, 6, 0);
+		"front face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Left_8);
+		Global.Down_9[Global.Up_1] += Vector(-2, -6, 0);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Down_1);
+		Global.Down_9[Global.Up_2] += Vector(-6, -2, 0);
+		"front turn"
+		Global.Down_9[Global.Up_3] += Vector(2, -6, 0);
+		Global.Down_9[Global.Up_4] += Vector(6, -2, 0);
+		Create HUD Text(All Players(All Teams), Custom String("LEFT DONE"), Null, Null, Left, 0, Color(Orange), Color(White), Color(White),
+			Visible To and String, Default Visibility);
+	}
+}
+
+rule("Down turn - subroutine")
+{
+	event
+	{
+		Subroutine;
+		Down;
+	}
+
+	actions
+	{
+		"right face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Left_4);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Left_5);
+		Global.Up_3 = Index Of Array Value(Global.Down_9, Global.Left_6);
+		Global.Up_4 = Index Of Array Value(Global.Down_9, Global.Left_7);
+		Global.Down_9[Global.Up_1] += Vector(0, 0, -4);
+		Global.Down_9[Global.Up_2] += Vector(-4, 0, 0);
+		Global.Down_9[Global.Up_4] += Vector(0, 0, 4);
+		Global.Down_9[Global.Up_3] += Vector(4, 0, 0);
+		"setup FRONT face"
+		Global.Up_3 = Index Of Array Value(Global.Down_9, Global.Down_1);
+		Global.Up_4 = Index Of Array Value(Global.Down_9, Global.Down_2);
+		"left face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Front_8);
+		Global.Down_9[Global.Up_1] += Vector(6, 0, -2);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Front_6);
+		Global.Down_9[Global.Up_2] += Vector(2, 0, -6);
+		"BACK face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Down_4);
+		Global.Down_9[Global.Up_1] += Vector(2, 0, 6);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Down_3);
+		Global.Down_9[Global.Up_2] += Vector(6, 0, 2);
+		"right face"
+		Global.Up_1 = Index Of Array Value(Global.Down_9, Global.Front_1);
+		Global.Down_9[Global.Up_1] += Vector(-6, 0, 2);
+		Global.Up_2 = Index Of Array Value(Global.Down_9, Global.Front_3);
+		Global.Down_9[Global.Up_2] += Vector(-2, 0, 6);
+		"front turn"
+		Global.Down_9[Global.Up_3] += Vector(-2, 0, -6);
+		Global.Down_9[Global.Up_4] += Vector(-6, 0, -2);
+		Create HUD Text(All Players(All Teams), Custom String("DOWN DONE"), Null, Null, Left, 0, Color(Green), Color(White), Color(White),
+			Visible To and String, Default Visibility);
+	}
+}

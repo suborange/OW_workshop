@@ -1,0 +1,86 @@
+variables
+{
+	global:
+		0: Right_1
+		1: Right_2
+		4: Left_1
+		5: Left_2
+		8: Up_1
+		9: Up_2
+		12: Down_1
+		13: Down_2
+		16: Front_1
+		17: Front_2
+		18: Front_3
+		19: Front_4
+		26: Cube_coords_orb
+		36: Position_1
+		37: Position_2
+		38: Position_3
+		39: Position_4
+		40: Position_5
+		41: Position_6
+		42: Position_7
+		43: Position_8
+		44: Position_9
+		45: Position_10
+		46: Position_11
+		47: Position_12
+		48: counter
+}
+
+subroutines
+{
+	0: Front
+}
+
+rule("Front turn - subroutine")
+{
+	event
+	{
+		Subroutine;
+		Front;
+	}
+
+	actions
+	{
+		"front face"
+		Global.Position_1 = Index Of Array Value(Global.Cube_coords_orb, Global.Front_1);
+		Global.Position_2 = Index Of Array Value(Global.Cube_coords_orb, Global.Front_2);
+		Global.Position_3 = Index Of Array Value(Global.Cube_coords_orb, Global.Front_4);
+		Global.Position_4 = Index Of Array Value(Global.Cube_coords_orb, Global.Front_3);		
+		"setup right face"
+		Global.Position_11 = Index Of Array Value(Global.Cube_coords_orb, Global.Right_1);
+		Global.Position_12 = Index Of Array Value(Global.Cube_coords_orb, Global.Right_2);
+		"up face"
+		Global.Position_5 = Index Of Array Value(Global.Cube_coords_orb, Global.Up_1);		
+		Global.Position_6 = Index Of Array Value(Global.Cube_coords_orb, Global.Up_2);		
+		"left face"
+		Global.Position_7 = Index Of Array Value(Global.Cube_coords_orb, Global.Left_1);		
+		Global.Position_8 = Index Of Array Value(Global.Cube_coords_orb, Global.Left_2);		
+		"down face"
+		Global.Position_9 = Index Of Array Value(Global.Cube_coords_orb, Global.Down_1);		
+		Global.Position_10 = Index Of Array Value(Global.Cube_coords_orb, Global.Down_2);
+		
+		"test for loop"
+
+	
+		
+		For Global Variable(counter, 0, 4, 1);
+			Global.Cube_coords_orb[Global.Position_1] += Vector(0, 0, -1);
+			Global.Cube_coords_orb[Global.Position_2] += Vector(0, -1, 0);
+			Global.Cube_coords_orb[Global.Position_3] += Vector(0, 0, 1);
+			Global.Cube_coords_orb[Global.Position_4] += Vector(0, 1, 0);
+			Global.Cube_coords_orb[Global.Position_5] += Vector(0, -1.5, -0.5);
+			Global.Cube_coords_orb[Global.Position_6] += Vector(0, -0.5, -1.5);
+			Global.Cube_coords_orb[Global.Position_7] += Vector(0, 0.5, -1.5);
+			Global.Cube_coords_orb[Global.Position_8] += Vector(0, 1.5, -0.5);
+			Global.Cube_coords_orb[Global.Position_9] += Vector(0, 1.5, 0.5);
+			Global.Cube_coords_orb[Global.Position_10] += Vector(0, 0.5, 1.5);
+			Global.Cube_coords_orb[Global.Position_11] += Vector(0, -0.5, 1.5);
+			Global.Cube_coords_orb[Global.Position_12] += Vector(0, -1.5, 0.5);
+			Create HUD Text(All Players(All Teams), Custom String("FRONT DONE"), Null, Null, Left, 0, Color(Gray), Color(White), Color(White),
+				Visible To and String, Default Visibility);
+		End;
+	}
+}

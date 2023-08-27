@@ -1,0 +1,833 @@
+variables
+{
+	global:
+		0: Front_0
+		1: Front_1
+		2: Front_2
+		3: Front_3
+		4: Front_4
+		5: Front_5
+		6: Front_6
+		7: Front_7
+		8: Front_8
+		9: Left_0
+		10: Left_1
+		11: Left_2
+		12: Left_3
+		13: Left_4
+		14: Left_5
+		15: Left_6
+		16: Left_7
+		17: Left_8
+		18: Down_0
+		19: Down_1
+		20: Down_2
+		21: Down_3
+		22: Down_4
+		23: Down_5
+		24: Down_6
+		25: Down_7
+		26: Down_8
+		27: Right_0
+		28: Right_1
+		29: Right_2
+		30: Right_3
+		31: Right_4
+		32: Right_5
+		33: Right_6
+		34: Right_7
+		35: Right_8
+		36: Up_0
+		37: Up_1
+		38: Up_2
+		39: Up_3
+		40: Up_4
+		41: Up_5
+		42: Up_6
+		43: Up_7
+		44: Up_8
+		45: Back_0
+		46: Back_1
+		47: Back_2
+		48: Back_3
+		49: Back_4
+		50: Back_5
+		51: Back_6
+		52: Back_7
+		53: Back_8
+}
+
+
+variables
+{
+	global:
+		0: Front_0
+		1: Front_1
+		2: Front_2
+		3: Front_3
+		4: Front_4
+		5: Front_5
+		6: Front_6
+		7: Front_7
+		8: Front_8
+		9: Front_9
+		10: Front_10
+		11: Front_11
+		12: Front_12
+		13: Front_13
+		14: Front_14
+		15: Front_15
+		16: Front_16
+		17: Front_17
+		18: Front_18
+		19: Front_19
+		20: Front_20
+		21: Front_21
+		22: Front_22
+		23: Front_23
+		24: Front_24
+		25: Front_25
+		26: Front_26
+		27: Front_27
+		28: Front_28
+		29: Front_29
+		30: Front_30
+		31: Front_31
+		32: Front_32
+		33: Front_33
+		34: Front_34
+		35: Front_35
+		36: Left_0
+		37: Left_1
+		38: Left_2
+		39: Left_3
+		40: Left_4
+		41: Left_5
+		42: Left_6
+		43: Left_7
+		44: Left_8
+		45: Left_9
+		46: Left_10
+		47: Left_11
+		48: Left_12
+		49: Left_13
+		50: Left_14
+		51: Left_15
+		52: Left_16
+		53: Left_17
+		54: Left_18
+		55: Left_19
+		56: Left_20
+		57: Left_21
+		58: Left_22
+		59: Left_23
+		60: Left_24
+		61: Left_25
+		62: Left_26
+		63: Left_27
+		64: Left_28
+		65: Left_29
+		66: Left_30
+		67: Left_31
+		68: Left_32
+		69: Left_33
+		70: Left_34
+		71: Left_35
+		72: Down_0
+		73: Down_1
+		74: Down_2
+		75: Down_3
+		76: Down_4
+		77: Down_5
+		78: Down_6
+		79: Down_7
+		80: Down_8
+		81: Down_9
+		82: Down_10
+		83: Down_11
+		84: Down_12
+		85: Down_13
+		86: Down_14
+		87: Down_15
+		88: Down_16
+		89: Down_17
+		90: Down_18
+		91: Down_19
+		92: Down_20
+		93: Down_21
+		94: Down_22
+		95: Down_23
+		96: Down_24
+		97: Down_25
+		98: Down_26
+		99: Down_27
+		100: Down_28
+		101: Down_29
+		102: Down_30
+		103: Down_31
+		104: Down_32
+		105: Down_33
+		106: Down_34
+		107: Down_35
+		108: Right_0
+		109: Right_1
+		110: Right_2
+		111: Right_3
+		112: Right_4
+		113: Right_5
+		114: Right_6
+		115: Right_7
+		116: Right_8
+		117: Right_9
+		118: Right_10
+		119: Right_11
+		120: Right_12
+		121: Right_13
+		122: Right_14
+		123: Right_15
+		124: Right_16
+		125: Right_17
+		126: Right_18
+		127: Right_19
+		128: Right_20
+		129: Right_21
+		130: Right_22
+		131: Right_23
+		132: Right_24
+		133: Right_25
+		134: Right_26
+		135: Right_27
+		136: Right_28
+		137: Right_29
+		138: Right_30
+		139: Right_31
+		140: Right_32
+		141: Right_33
+		142: Right_34
+		143: Right_35
+		144: Up_0
+		145: Up_1
+		146: Up_2
+		147: Up_3
+		148: Up_4
+		149: Up_5
+		150: Up_6
+		151: Up_7
+		152: Up_8
+		153: Up_9
+		154: Up_10
+		155: Up_11
+		156: Up_12
+		157: Up_13
+		158: Up_14
+		159: Up_15
+		160: Up_16
+		161: Up_17
+		162: Up_18
+		163: Up_19
+		164: Up_20
+		165: Up_21
+		166: Up_22
+		167: Up_23
+		168: Up_24
+		169: Up_25
+		170: Up_26
+		171: Up_27
+		172: Up_28
+		173: Up_29
+		174: Up_30
+		175: Up_31
+		176: Up_32
+		177: Up_33
+		178: Up_34
+		179: Up_35
+		180: Back_0
+		181: Back_1
+		182: Back_2
+		183: Back_3
+		184: Back_4
+		185: Back_5
+		186: Back_6
+		187: Back_7
+		188: Back_8
+		189: Back_9
+		190: Back_10
+		191: Back_11
+		192: Back_12
+		193: Back_13
+		194: Back_14
+		195: Back_15
+		196: Back_16
+		197: Back_17
+		198: Back_18
+		199: Back_19
+		200: Back_20
+		201: Back_21
+		202: Back_22
+		203: Back_23
+		204: Back_24
+		205: Back_25
+		206: Back_26
+		207: Back_27
+		208: Back_28
+		209: Back_29
+		210: Back_30
+		211: Back_31
+		212: Back_32
+		213: Back_33
+		214: Back_34
+		215: Back_35
+}
+
+
+actions
+{
+	
+	"DUMMIES - FRONT BOT"
+	Create Dummy Bot(Hero(Doomfist), Team 2, 0, Vector(0.293, 8.203, 2.032), Vector(0, 0, 0));
+	"RIGHT BOT"
+	Create Dummy Bot(Hero(Roadhog), Team 2, 1, Vector(-3.640, 8.541, -1.094), Vector(0, 0, 0));
+	"UP BOT"
+	Create Dummy Bot(Hero(Junker Queen), Team 2, 2, Vector(-4.113, 11.788, 1.956), Vector(0, 0, 0));
+	"BACK BOT"
+	Create Dummy Bot(Hero(Bastion), Team 2, 3, Vector(-7.518, 8.798, 1.957), Vector(0, 0, 0));
+	"LEFT BOT"
+	Create Dummy Bot(Hero(Lifeweaver), Team 2, 4, Vector(-3.604, 8.120, 5.084), Vector(0, 0, 0));
+	"DOWN BOT"
+	Create Dummy Bot(Hero(D.Va), Team 2, 5, Vector(-4.034, 5.304, 2.086), Vector(0, 0, 0));
+	"rename"
+	Start Forcing Dummy Bot Name(All Players(Team 2)[0], Custom String("FRONT"));
+	Start Forcing Dummy Bot Name(All Players(Team 2)[1], Custom String("RIGHT"));
+	Start Forcing Dummy Bot Name(All Players(Team 2)[2], Custom String("UP"));
+	Start Forcing Dummy Bot Name(All Players(Team 2)[3], Custom String("BACK"));
+	Start Forcing Dummy Bot Name(All Players(Team 2)[4], Custom String("LEFT"));
+	Start Forcing Dummy Bot Name(All Players(Team 2)[5], Custom String("DOWN"));
+	"DUMMIES - FRONT INVERSE"
+	Create Dummy Bot(Hero(Ana), Team 2, 6, Vector(15.135, 2.500, -3.790), Vector(0, 0, 0));
+	"RIGHT INVERSE BOT"
+	Create Dummy Bot(Hero(Reinhardt), Team 2, 7, Vector(15.202, 2.500, 0.005), Vector(0, 0, 0));
+	"UP INVERSE"
+	Create Dummy Bot(Hero(Junkrat), Team 2, 8, Vector(14.877, 2.477, 3.986), Vector(0, 0, 0));
+	"BACK INVERSE"
+	Create Dummy Bot(Hero(Baptiste), Team 2, 9, Vector(14.958, 2.483, 8.100), Vector(0, 0, 0));
+	"LEFT INVERSE"
+	Create Dummy Bot(Hero(Lúcio), Team 2, 10, Vector(14.950, 2.477, 11.418), Vector(0, 0, 0));
+	"DOWN INVERSE"
+	Create Dummy Bot(Hero(Widowmaker), Team 2, 11, Vector(14.950, 2.480, 15.423), Vector(0, 0, 0));
+	"rename"
+	Start Forcing Dummy Bot Name(All Players(Team 2)[6], Custom String("FRONT INVERSE"));
+	Start Forcing Dummy Bot Name(All Players(Team 2)[7], Custom String("RIGHT INVERSE"));
+	Start Forcing Dummy Bot Name(All Players(Team 2)[8], Custom String("UP INVERSE"));
+	Start Forcing Dummy Bot Name(All Players(Team 2)[9], Custom String("BACK INVERSE"));
+	Start Forcing Dummy Bot Name(All Players(Team 2)[10], Custom String("LEFT INVERSE"));
+	Start Forcing Dummy Bot Name(All Players(Team 2)[11], Custom String("DOWN INVERSE"));
+	"for each bot, make gravity 0"
+	For Global Variable(gravity_counter, 0, Count Of(All Players(Team 2)), 1);
+		Set Gravity(All Players(Team 2)[Global.gravity_counter], 0);
+	End;
+	
+	
+}
+
+
+variables
+{
+	global:
+		0: Front_1
+		1: Front_2
+}
+
+actions
+{
+	Global.Front_1 = Vector(0, 0, 0);
+	Global.Front_2 = Vector(0, 0, 0);
+	Global.Front_3 = Vector(0, 0, 0);
+	Global.Front_4 = Vector(0, 0, 0);
+
+	"White 1"
+	Create Beam Effect(All Players(All Teams), Good Beam, Global.Front_1, Global.Front_2, Color(White),
+		Visible To Position and Radius);
+
+
+}
+
+
+
+disabled rule("START try 3x3x3 white,green,orange -python script")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	conditions
+	{
+		Is Game In Progress == True;
+	}
+
+	actions
+	{
+		"White 1"
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 20, 0), Vector(0, 20, 3), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 20, 0), Vector(0, 17, 0), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 17, 3), Vector(0, 20, 3), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 17, 3), Vector(0, 17, 0), Color(White),
+			Visible To Position and Radius);
+		"White 2"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 20, 3.500), Vector(0, 20, 6.500), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 20, 3.500), Vector(0, 17, 3.500), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 17, 6.500), Vector(0, 20, 6.500), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 17, 6.500), Vector(0, 17, 3.500), Color(White),
+			Visible To Position and Radius);
+		"White 3"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 20, 7), Vector(0, 20, 10), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 20, 7), Vector(0, 17, 7), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 17, 10), Vector(0, 20, 10), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 17, 10), Vector(0, 17, 7), Color(White),
+			Visible To Position and Radius);
+		"White 4"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 16.500, 0), Vector(0, 16.500, 3), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 16.500, 0), Vector(0, 13.500, 0), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 13.500, 3), Vector(0, 16.500, 3), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 13.500, 3), Vector(0, 13.500, 0), Color(White),
+			Visible To Position and Radius);
+		"White 5"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 16.500, 3.500), Vector(0, 16.500, 6.500), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 16.500, 3.500), Vector(0, 13.500, 3.500), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 13.500, 6.500), Vector(0, 16.500, 6.500), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 13.500, 6.500), Vector(0, 13.500, 3.500), Color(White),
+			Visible To Position and Radius);
+		"White 6"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 16.500, 7), Vector(0, 16.500, 10), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 16.500, 7), Vector(0, 13.500, 7), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 13.500, 10), Vector(0, 16.500, 10), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 13.500, 10), Vector(0, 13.500, 7), Color(White),
+			Visible To Position and Radius);
+		"White 7"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 13, 0), Vector(0, 13, 3), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 13, 0), Vector(0, 10, 0), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10, 3), Vector(0, 13, 3), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10, 3), Vector(0, 10, 0), Color(White),
+			Visible To Position and Radius);
+		"White 8"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 13, 3.500), Vector(0, 13, 6.500), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 13, 3.500), Vector(0, 10, 3.500), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10, 6.500), Vector(0, 13, 6.500), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10, 6.500), Vector(0, 10, 3.500), Color(White),
+			Visible To Position and Radius);
+		"White 9"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 13, 7), Vector(0, 13, 10), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 13, 7), Vector(0, 10, 7), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10, 10), Vector(0, 13, 10), Color(White),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10, 10), Vector(0, 10, 7), Color(White),
+			Visible To Position and Radius);
+		"Green 1"
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10, 0), Vector(0, 10, 3), Color(Green),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10, 0), Vector(3, 10, 0), Color(Green),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 10, 3), Vector(0, 10, 3), Color(Green),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 10, 3), Vector(3, 10, 0), Color(Green),
+			Visible To Position and Radius);
+		"Green 2"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10, 3.500), Vector(0, 10, 6.500), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10, 3.500), Vector(3, 10, 3.500), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 10, 6.500), Vector(0, 10, 6.500), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 10, 6.500), Vector(3, 10, 3.500), Color(Green),
+			Visible To Position and Radius);
+		"Green 3"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10, 7), Vector(0, 10, 10), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 10, 7), Vector(3, 10, 7), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 10, 10), Vector(0, 10, 10), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 10, 10), Vector(3, 10, 7), Color(Green),
+			Visible To Position and Radius);
+		"Green 4"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.500, 10, 0), Vector(3.500, 10, 3), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.500, 10, 0), Vector(6.500, 10, 0), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.500, 10, 3), Vector(3.500, 10, 3), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.500, 10, 3), Vector(6.500, 10, 0), Color(Green),
+			Visible To Position and Radius);
+		"Green 5"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.500, 10, 3.500), Vector(3.500, 10, 6.500), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.500, 10, 3.500), Vector(6.500, 10, 3.500), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.500, 10, 6.500), Vector(3.500, 10, 6.500), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.500, 10, 6.500), Vector(6.500, 10, 3.500), Color(Green),
+			Visible To Position and Radius);
+		"Green 6"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.500, 10, 7), Vector(3.500, 10, 10), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.500, 10, 7), Vector(6.500, 10, 7), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.500, 10, 10), Vector(3.500, 10, 10), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.500, 10, 10), Vector(6.500, 10, 7), Color(Green),
+			Visible To Position and Radius);
+		"Green 7"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 10, 0), Vector(7, 10, 3), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 10, 0), Vector(10, 10, 0), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 10, 3), Vector(7, 10, 3), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 10, 3), Vector(10, 10, 0), Color(Green),
+			Visible To Position and Radius);
+		"Green 8"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 10, 3.500), Vector(7, 10, 6.500), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 10, 3.500), Vector(10, 10, 3.500), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 10, 6.500), Vector(7, 10, 6.500), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 10, 6.500), Vector(10, 10, 3.500), Color(Green),
+			Visible To Position and Radius);
+		"Green 9"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 10, 7), Vector(7, 10, 10), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 10, 7), Vector(10, 10, 7), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 10, 10), Vector(7, 10, 10), Color(Green),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 10, 10), Vector(10, 10, 7), Color(Green),
+			Visible To Position and Radius);
+		"Orange 1"
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 20, 0), Vector(3, 20, 0), Color(Orange),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 20, 0), Vector(0, 17, 0), Color(Orange),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 17, 0), Vector(3, 20, 0), Color(Orange),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 17, 0), Vector(0, 17, 0), Color(Orange),
+			Visible To Position and Radius);
+		"Orange 2"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.500, 20, 0), Vector(6.500, 20, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.500, 20, 0), Vector(3.500, 17, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.500, 17, 0), Vector(6.500, 20, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.500, 17, 0), Vector(3.500, 17, 0), Color(Orange),
+			Visible To Position and Radius);
+		"Orange 3"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 20, 0), Vector(10, 20, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 20, 0), Vector(7, 17, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 17, 0), Vector(10, 20, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 17, 0), Vector(7, 17, 0), Color(Orange),
+			Visible To Position and Radius);
+		"Orange 4"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 16.500, 0), Vector(3, 16.500, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 16.500, 0), Vector(0, 13.500, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 13.500, 0), Vector(3, 16.500, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 13.500, 0), Vector(0, 13.500, 0), Color(Orange),
+			Visible To Position and Radius);
+		"Orange 5"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.500, 16.500, 0), Vector(6.500, 16.500, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.500, 16.500, 0), Vector(3.500, 13.500, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.500, 13.500, 0), Vector(6.500, 16.500, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.500, 13.500, 0), Vector(3.500, 13.500, 0), Color(Orange),
+			Visible To Position and Radius);
+		"Orange 6"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 16.500, 0), Vector(10, 16.500, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 16.500, 0), Vector(7, 13.500, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 13.500, 0), Vector(10, 16.500, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 13.500, 0), Vector(7, 13.500, 0), Color(Orange),
+			Visible To Position and Radius);
+		"Orange 7"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 13, 0), Vector(3, 13, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 13, 0), Vector(0, 10, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 10, 0), Vector(3, 13, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 10, 0), Vector(0, 10, 0), Color(Orange),
+			Visible To Position and Radius);
+		"Orange 8"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.500, 13, 0), Vector(6.500, 13, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.500, 13, 0), Vector(3.500, 10, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.500, 10, 0), Vector(6.500, 13, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.500, 10, 0), Vector(3.500, 10, 0), Color(Orange),
+			Visible To Position and Radius);
+		"Orange 9"
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 13, 0), Vector(10, 13, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 13, 0), Vector(7, 10, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 10, 0), Vector(10, 13, 0), Color(Orange),
+			Visible To Position and Radius);
+		disabled Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 10, 0), Vector(7, 10, 0), Color(Orange),
+			Visible To Position and Radius);
+	}
+}
+
+
+variables
+{
+	global:
+		0: Front_1
+		1: Front_2
+		2: Front_3
+		3: Front_4
+		4: Front_5
+		5: Front_6
+		6: Front_7
+		7: Front_8
+		8: Front_9
+		9: Left_1
+		10: Left_2
+		11: Left_3
+		12: Left_4
+		13: Left_5
+		14: Left_6
+		15: Left_7
+		16: Left_8
+		17: Left_9
+		18: Down_1
+		19: Down_2
+		20: Down_3
+		21: Down_4
+		22: Down_5
+		23: Down_6
+		24: Down_7
+		25: Down_8
+		26: Down_9
+		27: Right_1
+		28: Right_2
+		29: Right_3
+		30: Right_4
+		31: Right_5
+		32: Right_6
+		33: Right_7
+		34: Right_8
+		35: Right_9
+		36: Up_1
+		37: Up_2
+		38: Up_3
+		39: Up_4
+		40: Up_5
+		41: Up_6
+		42: Up_7
+		43: Up_8
+		44: Up_9
+		45: Back_1
+		46: Back_2
+		47: Back_3
+		48: Back_4
+		49: Back_5
+		50: Back_6
+		51: Back_7
+		52: Back_8
+		53: Back_9
+        54: gravity_counter
+}
+
+
+rule("START try 3x3x3 red,blue,black -python script")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	conditions
+	{
+		Is Game In Progress == True;
+	}
+
+	actions
+	{
+        "Red 1"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 20, 10), Vector(3, 20, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 20, 10), Vector(0, 17, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 17, 10), Vector(3, 20, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 17, 10), Vector(0, 17, 10), Color(Red), Visible To Position and Radius);
+        "Red 2"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.5, 20, 10), Vector(6.5, 20, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.5, 20, 10), Vector(3.5, 17, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.5, 17, 10), Vector(6.5, 20, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.5, 17, 10), Vector(3.5, 17, 10), Color(Red), Visible To Position and Radius);
+        "Red 3"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 20, 10), Vector(10, 20, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 20, 10), Vector(7, 17, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 17, 10), Vector(10, 20, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 17, 10), Vector(7, 17, 10), Color(Red), Visible To Position and Radius);
+        "Red 4"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 16.5, 10), Vector(3, 16.5, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 16.5, 10), Vector(0, 13.5, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 13.5, 10), Vector(3, 16.5, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 13.5, 10), Vector(0, 13.5, 10), Color(Red), Visible To Position and Radius);
+        "Red 5"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.5, 16.5, 10), Vector(6.5, 16.5, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.5, 16.5, 10), Vector(3.5, 13.5, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.5, 13.5, 10), Vector(6.5, 16.5, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.5, 13.5, 10), Vector(3.5, 13.5, 10), Color(Red), Visible To Position and Radius);
+        "Red 6"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 16.5, 10), Vector(10, 16.5, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 16.5, 10), Vector(7, 13.5, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 13.5, 10), Vector(10, 16.5, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 13.5, 10), Vector(7, 13.5, 10), Color(Red), Visible To Position and Radius);
+        "Red 7"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 13, 10), Vector(3, 13, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 13, 10), Vector(0, 10, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 10, 10), Vector(3, 13, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 10, 10), Vector(0, 10, 10), Color(Red), Visible To Position and Radius);
+        "Red 8"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.5, 13, 10), Vector(6.5, 13, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.5, 13, 10), Vector(3.5, 10, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.5, 10, 10), Vector(6.5, 13, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.5, 10, 10), Vector(3.5, 10, 10), Color(Red), Visible To Position and Radius);
+        "Red 9"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 13, 10), Vector(10, 13, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 13, 10), Vector(7, 10, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 10, 10), Vector(10, 13, 10), Color(Red), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 10, 10), Vector(7, 10, 10), Color(Red), Visible To Position and Radius);
+        "Blue 1"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 20, 0), Vector(0, 20, 3), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 20, 0), Vector(3, 20, 0), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 20, 3), Vector(0, 20, 3), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 20, 3), Vector(3, 20, 0), Color(Blue), Visible To Position and Radius);
+        "Blue 2"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 20, 3.5), Vector(0, 20, 6.5), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 20, 3.5), Vector(3, 20, 3.5), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 20, 6.5), Vector(0, 20, 6.5), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 20, 6.5), Vector(3, 20, 3.5), Color(Blue), Visible To Position and Radius);
+        "Blue 3"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 20, 7), Vector(0, 20, 10), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(0, 20, 7), Vector(3, 20, 7), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 20, 10), Vector(0, 20, 10), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3, 20, 10), Vector(3, 20, 7), Color(Blue), Visible To Position and Radius);
+        "Blue 4"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.5, 20, 0), Vector(3.5, 20, 3), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.5, 20, 0), Vector(6.5, 20, 0), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.5, 20, 3), Vector(3.5, 20, 3), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.5, 20, 3), Vector(6.5, 20, 0), Color(Blue), Visible To Position and Radius);
+        "Blue 5"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.5, 20, 3.5), Vector(3.5, 20, 6.5), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.5, 20, 3.5), Vector(6.5, 20, 3.5), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.5, 20, 6.5), Vector(3.5, 20, 6.5), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.5, 20, 6.5), Vector(6.5, 20, 3.5), Color(Blue), Visible To Position and Radius);
+        "Blue 6"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.5, 20, 7), Vector(3.5, 20, 10), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(3.5, 20, 7), Vector(6.5, 20, 7), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.5, 20, 10), Vector(3.5, 20, 10), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(6.5, 20, 10), Vector(6.5, 20, 7), Color(Blue), Visible To Position and Radius);
+        "Blue 7"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 20, 0), Vector(7, 20, 3), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 20, 0), Vector(10, 20, 0), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 20, 3), Vector(7, 20, 3), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 20, 3), Vector(10, 20, 0), Color(Blue), Visible To Position and Radius);
+        "Blue 8"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 20, 3.5), Vector(7, 20, 6.5), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 20, 3.5), Vector(10, 20, 3.5), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 20, 6.5), Vector(7, 20, 6.5), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 20, 6.5), Vector(10, 20, 3.5), Color(Blue), Visible To Position and Radius);
+        "Blue 9"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 20, 7), Vector(7, 20, 10), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(7, 20, 7), Vector(10, 20, 7), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 20, 10), Vector(7, 20, 10), Color(Blue), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 20, 10), Vector(10, 20, 7), Color(Blue), Visible To Position and Radius);
+        "Black 1"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 20, 0), Vector(10, 20, 3), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 20, 0), Vector(10, 17, 0), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 17, 3), Vector(10, 20, 3), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 17, 3), Vector(10, 17, 0), Color(Black), Visible To Position and Radius);
+        "Black 2"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 20, 3.5), Vector(10, 20, 6.5), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 20, 3.5), Vector(10, 17, 3.5), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 17, 6.5), Vector(10, 20, 6.5), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 17, 6.5), Vector(10, 17, 3.5), Color(Black), Visible To Position and Radius);
+        "Black 3"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 20, 7), Vector(10, 20, 10), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 20, 7), Vector(10, 17, 7), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 17, 10), Vector(10, 20, 10), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 17, 10), Vector(10, 17, 7), Color(Black), Visible To Position and Radius);
+        "Black 4"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 16.5, 0), Vector(10, 16.5, 3), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 16.5, 0), Vector(10, 13.5, 0), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 13.5, 3), Vector(10, 16.5, 3), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 13.5, 3), Vector(10, 13.5, 0), Color(Black), Visible To Position and Radius);
+        "Black 5"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 16.5, 3.5), Vector(10, 16.5, 6.5), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 16.5, 3.5), Vector(10, 13.5, 3.5), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 13.5, 6.5), Vector(10, 16.5, 6.5), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 13.5, 6.5), Vector(10, 13.5, 3.5), Color(Black), Visible To Position and Radius);
+        "Black 6"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 16.5, 7), Vector(10, 16.5, 10), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 16.5, 7), Vector(10, 13.5, 7), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 13.5, 10), Vector(10, 16.5, 10), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 13.5, 10), Vector(10, 13.5, 7), Color(Black), Visible To Position and Radius);
+        "Black 7"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 13, 0), Vector(10, 13, 3), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 13, 0), Vector(10, 10, 0), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 10, 3), Vector(10, 13, 3), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 10, 3), Vector(10, 10, 0), Color(Black), Visible To Position and Radius);
+        "Black 8"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 13, 3.5), Vector(10, 13, 6.5), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 13, 3.5), Vector(10, 10, 3.5), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 10, 6.5), Vector(10, 13, 6.5), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 10, 6.5), Vector(10, 10, 3.5), Color(Black), Visible To Position and Radius);
+        "Black 9"
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 13, 7), Vector(10, 13, 10), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 13, 7), Vector(10, 10, 7), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 10, 10), Vector(10, 13, 10), Color(Black), Visible To Position and Radius);
+        Create Beam Effect(All Players(All Teams), Good Beam, Vector(10, 10, 10), Vector(10, 10, 7), Color(Black), Visible To Position and Radius);
+
+	}
+}
+
+
+
+

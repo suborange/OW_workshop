@@ -1,0 +1,131 @@
+
+rule("Front turn - subroutine")
+{
+	event
+	{
+		Subroutine;
+		Front;
+	}
+
+	actions
+	{
+		Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_1[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_1[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_1[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_1[4]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_2[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_2[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_2[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_2[4]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_3[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_3[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_3[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_3[4]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_4[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_4[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_4[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_4[4]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_5[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_5[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_5[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_5[4]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_6[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_6[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_6[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_6[4]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_7[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_7[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_7[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_7[4]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_8[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_8[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_8[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_8[4]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_9[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_9[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_9[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Front_9[4]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Down_1[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Down_1[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Down_1[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Down_1[4]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Down_2[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Down_2[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Down_2[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Down_2[4]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Down_3[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Down_3[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Down_3[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Down_3[4]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Left_1[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Left_1[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Left_1[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Left_1[4]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Left_4[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Left_4[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Left_4[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Left_4[4]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Left_7[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Left_7[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Left_7[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Left_7[4]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Up_1[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Up_1[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Up_1[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Up_1[4]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Up_2[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Up_2[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Up_2[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Up_2[4]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Up_3[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Up_3[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Up_3[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Up_3[4]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Right_1[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Right_1[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Right_1[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Right_1[4]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Right_4[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Right_4[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Right_4[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Right_4[4]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Right_7[1]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Right_7[2]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Right_7[3]));
+Modify Global Variable(position_index, Append To Array, Index Of Array Value(Global.Cube_coords, Global.Right_7[4]));
+Global.fake_coords[Global.position_index[1]] += Vector(0.0, 0.0,  2.5);
+Global.fake_coords[Global.position_index[2]] += Vector(0.0, -0.75,  1.75);
+Global.fake_coords[Global.position_index[3]] += Vector(0.0, 0.0,  1.0);
+Global.fake_coords[Global.position_index[4]] += Vector(0.0, 0.75,  1.75);
+Global.fake_coords[Global.position_index[5]] += Vector(0.0, -0.875,  1.625);
+Global.fake_coords[Global.position_index[6]] += Vector(0.0, -1.625,  0.875);
+Global.fake_coords[Global.position_index[7]] += Vector(0.0, -0.875,  0.125);
+Global.fake_coords[Global.position_index[8]] += Vector(0.0, -0.125,  0.875);
+Global.fake_coords[Global.position_index[9]] += Vector(0.0, -1.75,  0.75);
+Global.fake_coords[Global.position_index[10]] += Vector(0.0, -2.5,  0.0);
+Global.fake_coords[Global.position_index[11]] += Vector(0.0, -1.75,  -0.75);
+Global.fake_coords[Global.position_index[12]] += Vector(0.0, -1.0,  0.0);
+Global.fake_coords[Global.position_index[13]] += Vector(0.0, 0.875,  1.625);
+Global.fake_coords[Global.position_index[14]] += Vector(0.0, 0.125,  0.875);
+Global.fake_coords[Global.position_index[15]] += Vector(0.0, 0.875,  0.125);
+Global.fake_coords[Global.position_index[16]] += Vector(0.0, 1.625,  0.875);
+Global.fake_coords[Global.position_index[17]] += Vector(0.0, -0.875,  -0.125);
+Global.fake_coords[Global.position_index[18]] += Vector(0.0, -1.625,  -0.875);
+Global.fake_coords[Global.position_index[19]] += Vector(0.0, -0.875,  -1.625);
+Global.fake_coords[Global.position_index[20]] += Vector(0.0, -0.125,  -0.875);
+Global.fake_coords[Global.position_index[21]] += Vector(0.0, 1.75,  0.75);
+Global.fake_coords[Global.position_index[22]] += Vector(0.0, 1.0,  0.0);
+Global.fake_coords[Global.position_index[23]] += Vector(0.0, 1.75,  -0.75);
+Global.fake_coords[Global.position_index[24]] += Vector(0.0, 2.5,  0.0);
+Global.fake_coords[Global.position_index[25]] += Vector(0.0, 0.875,  -0.125);
+Global.fake_coords[Global.position_index[26]] += Vector(0.0, 0.125,  -0.875);
+Global.fake_coords[Global.position_index[27]] += Vector(0.0, 0.875,  -1.625);
+Global.fake_coords[Global.position_index[28]] += Vector(0.0, 1.625,  -0.875);
+Global.fake_coords[Global.position_index[29]] += Vector(0.0, 0.0,  -1.0);
+Global.fake_coords[Global.position_index[30]] += Vector(0.0, -0.75,  -1.75);
+Global.fake_coords[Global.position_index[31]] += Vector(0.0, 0.0,  -2.5);
+Global.fake_coords[Global.position_index[32]] += Vector(0.0, 0.75,  -1.75);
+		Create HUD Text(All Players(All Teams), Custom String("FRONT DONE"), Null, Null, Left, 0, Color(Gray), Color(White), Color(White),
+			Visible To and String, Default Visibility);
+	}
+}

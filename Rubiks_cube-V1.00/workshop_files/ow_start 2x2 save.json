@@ -1,0 +1,98 @@
+variables
+{
+	global:
+		54: gravity_counter
+
+	player:
+		0: HUD_toggle
+		1: ULT
+}
+
+subroutines
+{
+	0: Front
+	1: Right
+	2: Up
+	3: Back
+	4: Left
+	5: Down
+}
+
+rule("teleport players to starting location")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Has Spawned(Event Player) == True;
+	}
+
+	actions
+	{
+		Teleport(All Players(Team 1), Vector(15.500, 17, 1));
+	}
+}
+
+rule("START spawnbots")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	conditions
+	{
+		Is Game In Progress == True;
+	}
+
+	actions
+	{
+		"DUMMIES - FRONT BOT"
+		Create Dummy Bot(Hero(Doomfist), Team 2, 0, Vector(8.441, 4.367, -4.247), Vector(0, 0, 0));
+		"RIGHT BOT"
+		Create Dummy Bot(Hero(Roadhog), Team 2, 1, Vector(8.218, 4.357, -0.340), Vector(0, 0, 0));
+		"UP BOT"
+		Create Dummy Bot(Hero(Junker Queen), Team 2, 2, Vector(8.779, 3.755, 4.115), Vector(0, 0, 0));
+		"BACK BOT"
+		Create Dummy Bot(Hero(Bastion), Team 2, 3, Vector(8.103, 4.366, 7.682), Vector(0, 0, 0));
+		"LEFT BOT"
+		Create Dummy Bot(Hero(Lifeweaver), Team 2, 4, Vector(8.034, 4.364, 11.247), Vector(0, 0, 0));
+		"DOWN BOT"
+		Create Dummy Bot(Hero(D.Va), Team 2, 5, Vector(6.999, 4.556, 14.782), Vector(0, 0, 0));
+		"rename"
+		Start Forcing Dummy Bot Name(All Players(Team 2)[0], Custom String("FRONT"));
+		Start Forcing Dummy Bot Name(All Players(Team 2)[1], Custom String("RIGHT"));
+		Start Forcing Dummy Bot Name(All Players(Team 2)[2], Custom String("UP"));
+		Start Forcing Dummy Bot Name(All Players(Team 2)[3], Custom String("BACK"));
+		Start Forcing Dummy Bot Name(All Players(Team 2)[4], Custom String("LEFT"));
+		Start Forcing Dummy Bot Name(All Players(Team 2)[5], Custom String("DOWN"));
+		"DUMMIES - FRONT INVERSE"
+		Create Dummy Bot(Hero(Ana), Team 2, 6, Vector(15.135, 2.500, -3.790), Vector(0, 0, 0));
+		"RIGHT INVERSE BOT"
+		Create Dummy Bot(Hero(Reinhardt), Team 2, 7, Vector(15.202, 2.500, 0.005), Vector(0, 0, 0));
+		"UP INVERSE"
+		Create Dummy Bot(Hero(Junkrat), Team 2, 8, Vector(14.877, 2.477, 3.986), Vector(0, 0, 0));
+		"BACK INVERSE"
+		Create Dummy Bot(Hero(Baptiste), Team 2, 9, Vector(14.958, 2.483, 8.100), Vector(0, 0, 0));
+		"LEFT INVERSE"
+		Create Dummy Bot(Hero(Lúcio), Team 2, 10, Vector(14.950, 2.477, 11.418), Vector(0, 0, 0));
+		"DOWN INVERSE"
+		Create Dummy Bot(Hero(Widowmaker), Team 2, 11, Vector(15.102, 3.495, 15.421), Vector(0, 0, 0));
+		"rename"
+		Start Forcing Dummy Bot Name(All Players(Team 2)[6], Custom String("FRONT INVERSE"));
+		Start Forcing Dummy Bot Name(All Players(Team 2)[7], Custom String("RIGHT INVERSE"));
+		Start Forcing Dummy Bot Name(All Players(Team 2)[8], Custom String("UP INVERSE"));
+		Start Forcing Dummy Bot Name(All Players(Team 2)[9], Custom String("BACK INVERSE"));
+		Start Forcing Dummy Bot Name(All Players(Team 2)[10], Custom String("LEFT INVERSE"));
+		Start Forcing Dummy Bot Name(All Players(Team 2)[11], Custom String("DOWN INVERSE"));
+		"for each bot, make gravity 0"
+		For Global Variable(gravity_counter, 0, Count Of(All Players(Team 2)), 1);
+			Set Gravity(All Players(Team 2)[Global.gravity_counter], 0);
+		End;		
+	}
+}

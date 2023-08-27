@@ -1,0 +1,1177 @@
+variables
+{
+	global:
+		0: spawn
+		1: tomas
+		2: start
+
+	player:
+		0: sine
+		1: tomas
+		2: eye_1
+		3: eye_2
+		4: cloud
+		5: cloud_effect
+		6: face_0
+		7: face_1
+		8: face_2
+		9: speed
+}
+
+rule("Initialize dome radius (A), shrink it to zero over time, and loop")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	actions
+	{
+		Global.Z = 50;
+		Chase Global Variable Over Time(Z, 0, 190, Destination and Duration);
+		Wait(200, Ignore Condition);
+		Loop;
+	}
+}
+
+rule("Create the dome visual effect and update its radius (A)")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	actions
+	{
+		Create Effect(All Players(All Teams), Sphere, Color(Blue), Objective Position(Objective Index), Global.Z,
+			Visible To Position and Radius);
+	}
+}
+
+rule("Create the dome sound effect and position it on the dome near the player")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	actions
+	{
+		Create Effect(Event Player, Energy Sound, Color(White), Objective Position(Objective Index) + Direction Towards(Objective Position(
+			Objective Index), Event Player) * Global.Z, 100, Position and Radius);
+	}
+}
+
+rule("If a player steps out of the radius (A), apply burning and damage and disallow healing")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Distance Between(Event Player, Objective Position(Objective Index)) >= Global.Z;
+	}
+
+	actions
+	{
+		Set Status(Event Player, Null, Burning, 9999);
+		Start Damage Over Time(Event Player, Null, 9999, 300);
+		Set Healing Received(Event Player, 0);
+	}
+}
+
+rule("If a player steps back in the radius (A), disable burning and damage and reallow healing")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Distance Between(Event Player, Objective Position(Objective Index)) < Global.Z;
+	}
+
+	actions
+	{
+		Clear Status(Event Player, Burning);
+		Stop All Damage Over Time(Event Player);
+		Set Healing Received(Event Player, 100);
+	}
+}
+
+disabled rule("")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Is Button Held(Event Player, Button(Interact)) == True;
+	}
+
+	actions
+	{
+		Teleport(Event Player, Eye Position(Event Player) + Facing Direction Of(Event Player) * 5);
+	}
+}
+
+disabled rule("봇(테스트)")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	actions
+	{
+		Create Dummy Bot(Hero(Soldier: 76), All Teams, 0, Global.spawn, Vector(0, 0, 0));
+	}
+}
+
+disabled rule("앉기(테스트)")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	conditions
+	{
+		Is Button Held(Host Player, Button(Primary Fire)) == True;
+	}
+
+	actions
+	{
+		Press Button(All Players(All Teams), Button(Ability 1));
+	}
+}
+
+rule("Respawn")
+{
+	event
+	{
+		Player Died;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		(Event Player.tomas || Global.start != True) == True;
+	}
+
+	actions
+	{
+		Respawn(Event Player);
+	}
+}
+
+rule("Body")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Has Spawned(Event Player) == True;
+		Event Player.tomas == True;
+	}
+
+	actions
+	{
+		Set Invisible(Event Player, All);
+		Create Effect(All Players(All Teams), Sphere, Color(Blue), Eye Position(Event Player) + World Vector Of(Vector(0, 0, 0),
+			Event Player, Rotation), 1.300, Visible To Position and Radius);
+		Create Effect(All Players(All Teams), Sphere, Color(Blue), Eye Position(Event Player) + World Vector Of(Vector(0, 0, -0.700),
+			Event Player, Rotation), 1.300, Visible To Position and Radius);
+		Create Effect(All Players(All Teams), Sphere, Color(Blue), Eye Position(Event Player) + World Vector Of(Vector(0, 0, -1.400),
+			Event Player, Rotation), 1.300, Visible To Position and Radius);
+		Create Effect(All Players(All Teams), Sphere, Color(Blue), Eye Position(Event Player) + World Vector Of(Vector(0, 0, -2.100),
+			Event Player, Rotation), 1.300, Visible To Position and Radius);
+		"down"
+		Create Effect(All Players(All Teams), Sphere, Color(Red), Eye Position(Event Player) + World Vector Of(Vector(0.400, -1.300, 1),
+			Event Player, Rotation), 0.400, Visible To Position and Radius);
+		Create Effect(All Players(All Teams), Sphere, Color(Red), Eye Position(Event Player) + World Vector Of(Vector(-0.400, -1.300, 1),
+			Event Player, Rotation), 0.400, Visible To Position and Radius);
+		Create Effect(All Players(All Teams), Sphere, Color(Red), Eye Position(Event Player) + World Vector Of(Vector(0.800, -1.300,
+			0.700), Event Player, Rotation), 0.400, Visible To Position and Radius);
+		Create Effect(All Players(All Teams), Sphere, Color(Red), Eye Position(Event Player) + World Vector Of(Vector(-0.800, -1.300,
+			0.700), Event Player, Rotation), 0.400, Visible To Position and Radius);
+		Create Effect(All Players(All Teams), Sphere, Color(Red), Eye Position(Event Player) + World Vector Of(Vector(0, -1.300, 1),
+			Event Player, Rotation), 0.400, Visible To Position and Radius);
+	}
+}
+
+rule("Face")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Has Spawned(Event Player) == True;
+		Event Player.tomas == True;
+	}
+
+	actions
+	{
+		"얼굴"
+		Create Effect(All Players(All Teams), Sphere, Color(White), Eye Position(Event Player) + World Vector Of(Vector(0, 0, 1),
+			Event Player, Rotation), 1, Visible To Position and Radius);
+		"코"
+		Create Effect(All Players(All Teams), Sphere, Color(White), Eye Position(Event Player) + World Vector Of(Vector(0, 0, 2),
+			Event Player, Rotation), 0.200, Visible To Position and Radius);
+		"볼"
+		Create Effect(All Players(All Teams), Sphere, Color(White), Eye Position(Event Player) + World Vector Of(Vector(0.500, -0.200,
+			1.500), Event Player, Rotation), 0.350, Visible To Position and Radius);
+		"볼"
+		Create Effect(All Players(All Teams), Sphere, Color(White), Eye Position(Event Player) + World Vector Of(Vector(-0.500, -0.200,
+			1.500), Event Player, Rotation), 0.350, Visible To Position and Radius);
+		Create Effect(All Players(All Teams), Sphere, Color(White), Eye Position(Event Player) + World Vector Of(Vector(0.400, 0.250,
+			1.550), Event Player, Rotation), 0.300, Visible To Position and Radius);
+		Create Effect(All Players(All Teams), Sphere, Color(White), Eye Position(Event Player) + World Vector Of(Vector(-0.400, 0.250,
+			1.550), Event Player, Rotation), 0.300, Visible To Position and Radius);
+	}
+}
+
+rule("Right eye")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Has Spawned(Event Player) == True;
+		Event Player.tomas == True;
+	}
+
+	actions
+	{
+		"out"
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-0.400,
+			Event Player.eye_2 + 0.300, 1.950), Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.300,
+			Event Player.eye_2 + 0.300, 1.950), Event Player, Rotation), Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-0.400,
+			Event Player.eye_1 + 0.100, 1.950), Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.300,
+			Event Player.eye_1 + 0.100, 1.950), Event Player, Rotation), Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(
+			Event Player.eye_1 + -0.451, 0.250, 1.950), Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(
+			Event Player.eye_1 + -0.450, 0.150, 1.950), Event Player, Rotation), Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(
+			Event Player.eye_2 + -0.251, 0.250, 1.950), Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(
+			Event Player.eye_2 + -0.250, 0.150, 1.950), Event Player, Rotation), Color(White), Visible To Position and Radius);
+		"in"
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-0.401, 0.250, 1.950),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.400, 0.150, 1.950), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-0.301, 0.250, 1.950),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.300, 0.150, 1.950), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-0.400, 0.250, 1.950),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.300, 0.250, 1.950), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-0.400, 0.150, 1.950),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.300, 0.150, 1.950), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+		"out"
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(
+			Event Player.eye_1 + -0.400, Event Player.eye_2 + 0.300, 1.950), Event Player, Rotation), Eye Position(Event Player)
+			+ World Vector Of(Vector(Event Player.eye_1 + -0.450, Event Player.eye_2 + 0.250, 1.950), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(
+			Event Player.eye_2 + -0.300, Event Player.eye_2 + 0.300, 1.950), Event Player, Rotation), Eye Position(Event Player)
+			+ World Vector Of(Vector(Event Player.eye_2 + -0.250, Event Player.eye_2 + 0.250, 1.950), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(
+			Event Player.eye_2 + -0.300, Event Player.eye_1 + 0.100, 1.950), Event Player, Rotation), Eye Position(Event Player)
+			+ World Vector Of(Vector(Event Player.eye_2 + -0.250, Event Player.eye_1 + 0.150, 1.950), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(
+			Event Player.eye_1 + -0.400, Event Player.eye_1 + 0.100, 1.950), Event Player, Rotation), Eye Position(Event Player)
+			+ World Vector Of(Vector(Event Player.eye_1 + -0.450, Event Player.eye_1 + 0.150, 1.950), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		"in"
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-0.351, 0.250, 1.950),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.350, 0.150, 1.950), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+	}
+}
+
+rule("Left eye")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Has Spawned(Event Player) == True;
+		Event Player.tomas == True;
+	}
+
+	actions
+	{
+		"out"
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.400,
+			Event Player.eye_2 + 0.300, 1.950), Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.300,
+			Event Player.eye_2 + 0.300, 1.950), Event Player, Rotation), Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.400,
+			Event Player.eye_1 + 0.100, 1.950), Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.300,
+			Event Player.eye_1 + 0.100, 1.950), Event Player, Rotation), Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(
+			Event Player.eye_2 + 0.451, 0.250, 1.950), Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(
+			Event Player.eye_2 + 0.450, 0.150, 1.950), Event Player, Rotation), Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(
+			Event Player.eye_1 + 0.251, 0.250, 1.950), Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(
+			Event Player.eye_1 + 0.250, 0.150, 1.950), Event Player, Rotation), Color(White), Visible To Position and Radius);
+		"in"
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.401, 0.250, 1.950),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.400, 0.150, 1.950), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.301, 0.250, 1.950),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.300, 0.150, 1.950), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.400, 0.250, 1.950),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.300, 0.250, 1.950), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.400, 0.150, 1.950),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.300, 0.150, 1.950), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+		"out"
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(
+			Event Player.eye_2 + 0.400, Event Player.eye_2 + 0.300, 1.950), Event Player, Rotation), Eye Position(Event Player)
+			+ World Vector Of(Vector(Event Player.eye_2 + 0.450, Event Player.eye_2 + 0.250, 1.950), Event Player, Rotation), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(
+			Event Player.eye_1 + 0.300, Event Player.eye_2 + 0.300, 1.950), Event Player, Rotation), Eye Position(Event Player)
+			+ World Vector Of(Vector(Event Player.eye_1 + 0.250, Event Player.eye_2 + 0.250, 1.950), Event Player, Rotation), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(
+			Event Player.eye_1 + 0.300, Event Player.eye_1 + 0.100, 1.950), Event Player, Rotation), Eye Position(Event Player)
+			+ World Vector Of(Vector(Event Player.eye_1 + 0.250, Event Player.eye_1 + 0.150, 1.950), Event Player, Rotation), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(
+			Event Player.eye_2 + 0.400, Event Player.eye_1 + 0.100, 1.950), Event Player, Rotation), Eye Position(Event Player)
+			+ World Vector Of(Vector(Event Player.eye_2 + 0.450, Event Player.eye_1 + 0.150, 1.950), Event Player, Rotation), Color(White),
+			Visible To Position and Radius);
+		"in"
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.351, 0.250, 1.950),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.350, 0.150, 1.950), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+	}
+}
+
+rule("Right eyebrow")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Has Spawned(Event Player) == True;
+		Event Player.tomas == True;
+	}
+
+	actions
+	{
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-0.500,
+			Event Player.face_0 + 0.500, 1.950), Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.200,
+			Event Player.face_1 + 0.500, 1.950), Event Player, Rotation), Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-0.350,
+			Event Player.face_2 + 0.550, 1.950), Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.200,
+			Event Player.face_1 + 0.500, 1.950), Event Player, Rotation), Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-0.350,
+			Event Player.face_2 + 0.550, 1.950), Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.500,
+			Event Player.face_0 + 0.500, 1.950), Event Player, Rotation), Color(White), Visible To Position and Radius);
+	}
+}
+
+rule("Left eyebrow")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Has Spawned(Event Player) == True;
+		Event Player.tomas == True;
+	}
+
+	actions
+	{
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.500,
+			Event Player.face_0 + 0.500, 1.950), Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.200,
+			Event Player.face_1 + 0.500, 1.950), Event Player, Rotation), Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.350,
+			Event Player.face_2 + 0.550, 1.950), Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.200,
+			Event Player.face_1 + 0.500, 1.950), Event Player, Rotation), Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.350,
+			Event Player.face_2 + 0.550, 1.950), Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.500,
+			Event Player.face_0 + 0.500, 1.950), Event Player, Rotation), Color(White), Visible To Position and Radius);
+	}
+}
+
+rule("Face circumference")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Has Spawned(Event Player) == True;
+		Event Player.tomas == True;
+	}
+
+	actions
+	{
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(1.001, 0.500, 1),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(1, -0.500, 1), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-1.001, 0.500, 1),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-1, -0.500, 1), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.500, 1, 1),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.500, 1, 1), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.500, -1, 1),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.500, -1, 1), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(1, 0.500, 1),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.500, 1, 1), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(1, -0.500, 1),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.500, -1, 1), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-1, 0.500, 1),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.500, 1, 1), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-1, -0.500, 1),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.500, -1, 1), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+	}
+}
+
+rule("얼굴둘래")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Is Using Ability 1(Event Player) == True;
+		Event Player.tomas == True;
+	}
+
+	actions
+	{
+		Chase Player Variable Over Time(Event Player, face_0, 0.150, 0.250, Destination and Duration);
+		Chase Player Variable Over Time(Event Player, face_1, 0.025, 0.250, Destination and Duration);
+		Chase Player Variable Over Time(Event Player, face_2, 0.125, 0.250, Destination and Duration);
+		Chase Player Variable Over Time(Event Player, eye_1, 0.050, 0.250, Destination and Duration);
+		Chase Player Variable Over Time(Event Player, eye_2, -0.050, 0.250, Destination and Duration);
+		Set Move Speed(Event Player, 10000);
+	}
+}
+
+rule("Not rush")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Is Using Ability 1(Event Player) == False;
+		Event Player.tomas == True;
+	}
+
+	actions
+	{
+		Chase Player Variable Over Time(Event Player, face_0, 0.075, 0.250, Destination and Duration);
+		Chase Player Variable Over Time(Event Player, face_1, 0.125, 0.250, Destination and Duration);
+		Chase Player Variable Over Time(Event Player, face_2, 0.125, 0.250, Destination and Duration);
+		Chase Player Variable Over Time(Event Player, eye_1, 0, 0.250, Destination and Duration);
+		Chase Player Variable Over Time(Event Player, eye_2, 0, 0.250, Destination and Duration);
+		Set Move Speed(Event Player, 250);
+		Set Status(Event Player, Null, Stunned, 1);
+	}
+}
+
+rule("Mouth")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Has Spawned(Event Player) == True;
+		Event Player.tomas == True;
+	}
+
+	actions
+	{
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.300, -0.430, 1.850),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.010, Event Player.eye_1 + -0.470, 1.850),
+			Event Player, Rotation), Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.010,
+			Event Player.eye_1 + -0.470, 1.850), Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.300,
+			-0.430, 1.850), Event Player, Rotation), Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.300, -0.430, 1.850),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.010, Event Player.eye_2 * 3 + -0.470, 1.850),
+			Event Player, Rotation), Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.010,
+			Event Player.eye_2 * 3 + -0.470, 1.850), Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.300,
+			-0.430, 1.850), Event Player, Rotation), Color(White), Visible To Position and Radius);
+	}
+}
+
+rule("Horn?")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Has Spawned(Event Player) == True;
+		Event Player.tomas == True;
+	}
+
+	actions
+	{
+		"down"
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.001, 1.500, 1),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0, 1, 1), Event Player, Rotation), Color(White),
+			Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.001, 1.500, 0.700),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0, 1, 0.700), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.151, 1.500, 0.850),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.150, 1, 0.850), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-0.151, 1.500, 0.850),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.150, 1, 0.850), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		"up"
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.150, 1.500, 1.300),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.150, 1.500, 1.300), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.150, 1.500, 0.400),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.150, 1.500, 0.400), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.450, 1.500, 0.700),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.450, 1.500, 1), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-0.450, 1.500, 0.700),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.450, 1.500, 1), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		"up"
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.150, 1.500, 1.300),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.450, 1.500, 1), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-0.150, 1.500, 1.300),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.450, 1.500, 1), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-0.150, 1.500, 0.400),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.450, 1.500, 0.700), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.150, 1.500, 0.400),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.450, 1.500, 0.700), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+		"up"
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.150, 1.700, 1.300),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.150, 1.700, 1.300), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.150, 1.700, 0.400),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.150, 1.700, 0.400), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.450, 1.700, 0.700),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.450, 1.700, 1), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-0.450, 1.700, 0.700),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.450, 1.700, 1), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		"up"
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.150, 1.700, 1.300),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.450, 1.700, 1), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-0.150, 1.700, 1.300),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.450, 1.700, 1), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-0.150, 1.700, 0.400),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.450, 1.700, 0.700), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.150, 1.700, 0.400),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.450, 1.700, 0.700), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+		"up"
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.150, 1.500, 1.300),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.150, 1.700, 1.300), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.150, 1.500, 0.400),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.150, 1.700, 0.400), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.450, 1.500, 0.700),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.450, 1.700, 1), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-0.450, 1.500, 0.700),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.450, 1.700, 1), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		"up"
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.150, 1.500, 1.300),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.450, 1.700, 1), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-0.150, 1.500, 1.300),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.450, 1.700, 1), Event Player, Rotation), Color(
+			White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-0.150, 1.500, 0.400),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(-0.450, 1.700, 0.700), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(0.150, 1.500, 0.400),
+			Event Player, Rotation), Eye Position(Event Player) + World Vector Of(Vector(0.450, 1.700, 0.700), Event Player, Rotation),
+			Color(White), Visible To Position and Radius);
+	}
+}
+
+rule("Acting")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Has Spawned(Event Player) == True;
+		Event Player.tomas == True;
+	}
+
+	actions
+	{
+		Event Player.cloud[0] = Eye Position(Event Player) + World Vector Of(Vector(0, 1.700, 0.850), Event Player, Rotation);
+		Create Effect(All Players(All Teams), Cloud, Color(White), Event Player.cloud[0], 1, Visible To Position and Radius);
+		Event Player.cloud_effect[0] = Last Created Entity;
+		Destroy Effect(Event Player.cloud_effect[1]);
+		Wait(0.500, Ignore Condition);
+		Event Player.cloud[1] = Eye Position(Event Player) + World Vector Of(Vector(0, 1.700, 0.850), Event Player, Rotation);
+		Create Effect(All Players(All Teams), Cloud, Color(White), Event Player.cloud[1], 1, Visible To Position and Radius);
+		Event Player.cloud_effect[1] = Last Created Entity;
+		Destroy Effect(Event Player.cloud_effect[2]);
+		Wait(0.500, Ignore Condition);
+		Event Player.cloud[2] = Eye Position(Event Player) + World Vector Of(Vector(0, 1.700, 0.850), Event Player, Rotation);
+		Create Effect(All Players(All Teams), Cloud, Color(White), Event Player.cloud[2], 1, Visible To Position and Radius);
+		Event Player.cloud_effect[2] = Last Created Entity;
+		Destroy Effect(Event Player.cloud_effect[3]);
+		Wait(0.500, Ignore Condition);
+		Event Player.cloud[3] = Eye Position(Event Player) + World Vector Of(Vector(0, 1.700, 0.850), Event Player, Rotation);
+		Create Effect(All Players(All Teams), Cloud, Color(White), Event Player.cloud[3], 1, Visible To Position and Radius);
+		Event Player.cloud_effect[3] = Last Created Entity;
+		Destroy Effect(Event Player.cloud_effect[4]);
+		Wait(0.500, Ignore Condition);
+		Event Player.cloud[4] = Eye Position(Event Player) + World Vector Of(Vector(0, 1.700, 0.850), Event Player, Rotation);
+		Create Effect(All Players(All Teams), Cloud, Color(White), Event Player.cloud[4], 1, Visible To Position and Radius);
+		Event Player.cloud_effect[4] = Last Created Entity;
+		Destroy Effect(Event Player.cloud_effect[0]);
+		Wait(0.500, Ignore Condition);
+		Loop;
+	}
+}
+
+rule("Wheel")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Has Spawned(Event Player) == True;
+		Event Player.tomas == True;
+	}
+
+	actions
+	{
+		Create Effect(All Players(All Teams), Sphere, Color(Blue), Eye Position(Event Player) + World Vector Of(Vector(0.600, -1, -0.400),
+			Event Player, Rotation), 0.700, Visible To Position and Radius);
+		Create Effect(All Players(All Teams), Sphere, Color(Blue), Eye Position(Event Player) + World Vector Of(Vector(-0.600, -1, -0.400),
+			Event Player, Rotation), 0.700, Visible To Position and Radius);
+		Create Effect(All Players(All Teams), Sphere, Color(Blue), Eye Position(Event Player) + World Vector Of(Vector(0.600, -1, -2),
+			Event Player, Rotation), 0.700, Visible To Position and Radius);
+		Create Effect(All Players(All Teams), Sphere, Color(Blue), Eye Position(Event Player) + World Vector Of(Vector(-0.600, -1, -2),
+			Event Player, Rotation), 0.700, Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(1.300,
+			Sine From Degrees(Event Player.sine) * 0.500 + -1, Cosine From Degrees(Event Player.sine) * 0.500 + -0.400), Event Player,
+			Rotation), Eye Position(Event Player) + World Vector Of(Vector(1.300, Sine From Degrees(Event Player.sine) * 0.500 + -1,
+			Cosine From Degrees(Event Player.sine) * 0.500 + -2), Event Player, Rotation), Color(White), Visible To Position and Radius);
+		Create Beam Effect(All Players(All Teams), Grapple Beam, Eye Position(Event Player) + World Vector Of(Vector(-1.300,
+			Sine From Degrees(Event Player.sine) * 0.500 + -1, Cosine From Degrees(Event Player.sine) * 0.500 + -0.400), Event Player,
+			Rotation), Eye Position(Event Player) + World Vector Of(Vector(-1.300, Sine From Degrees(Event Player.sine) * 0.500 + -1,
+			Cosine From Degrees(Event Player.sine) * 0.500 + -2), Event Player, Rotation), Color(White), Visible To Position and Radius);
+	}
+}
+
+rule("Rein settings")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Event Player.tomas == True;
+	}
+
+	actions
+	{
+		Start Forcing Player To Be Hero(Event Player, Hero(Reinhardt));
+		Start Camera(Event Player, Eye Position(Event Player) + Facing Direction Of(Event Player) * -5, Eye Position(Event Player), 50);
+		Start Forcing Throttle(Event Player, 0, 1, 0, 1, 0, 0);
+		Disallow Button(Event Player, Button(Primary Fire));
+		Set Secondary Fire Enabled(Event Player, False);
+		Allow Button(Event Player, Button(Ability 2));
+		Allow Button(Event Player, Button(Ultimate));
+		Disallow Button(Event Player, Button(Crouch));
+		Set Damage Dealt(Event Player, 10000);
+		Set Gravity(Event Player, 70);
+		Set Move Speed(Event Player, 150);
+	}
+}
+
+rule("Wheel movement")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Event Player.tomas == True;
+	}
+
+	actions
+	{
+		Chase Player Variable At Rate(Event Player, sine, Z Component Of(Throttle Of(Event Player)) * -1080, Event Player.speed,
+			Destination and Rate);
+	}
+}
+
+rule("바퀴 움직임")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Event Player.sine == Z Component Of(Throttle Of(Event Player)) * -1080;
+		Event Player.tomas == True;
+	}
+
+	actions
+	{
+		Event Player.sine = 0;
+	}
+}
+
+rule("바퀴 움직임")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Z Component Of(Throttle Of(Event Player)) != 0;
+		Event Player.tomas == True;
+	}
+
+	actions
+	{
+		Skip If(Is Using Ability 1(Event Player) == True, 2);
+		Event Player.speed = 540;
+		Skip(1);
+		Event Player.speed = 1080;
+	}
+}
+
+rule("바퀴 움직임")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Z Component Of(Throttle Of(Event Player)) == 0;
+		Event Player.tomas == True;
+	}
+
+	actions
+	{
+		Event Player.speed = 0;
+	}
+}
+
+rule("Spawn")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Is Alive(Event Player) == True;
+		Has Spawned(Event Player) == True;
+	}
+
+	actions
+	{
+		disabled Teleport(Event Player, Global.spawn);
+	}
+}
+
+rule("Variable")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	actions
+	{
+		Global.spawn = Vector(-145.488, 5.647, 103.619);
+		Disable Built-In Game Mode Scoring;
+	}
+}
+
+rule("When you die")
+{
+	event
+	{
+		Player Died;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Event Player != Global.tomas;
+		Has Spawned(Event Player) == True;
+	}
+
+	actions
+	{
+		Disable Built-In Game Mode Respawning(Event Player);
+		Set Respawn Max Time(Event Player, 9999);
+		Enable Death Spectate All Players(Event Player);
+	}
+}
+
+rule("Choosing thomas")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	conditions
+	{
+		Is Game In Progress == True;
+	}
+
+	actions
+	{
+		Big Message(All Players(All Teams), Custom String("Run from Thomas or get run over!"));
+		Global.tomas = Random Value In Array(All Players(All Teams));
+		Global.tomas.tomas = True;
+		Set Match Time(5);
+	}
+}
+
+rule("Inability to enter")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Z Component Of(Eye Position(Event Player)) > 115;
+		X Component Of(Eye Position(Event Player)) < -141;
+		Z Component Of(Eye Position(Event Player)) < 105;
+	}
+
+	actions
+	{
+		Apply Impulse(Event Player, Vector(0, 0, -1), 20, To World, Cancel Contrary Motion);
+		Set Status(Event Player, Null, Rooted, 0.500);
+		Wait(0.500, Ignore Condition);
+		Loop If Condition Is True;
+	}
+}
+
+rule("Inability to enter")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		X Component Of(Eye Position(Event Player)) < -144;
+		Z Component Of(Eye Position(Event Player)) < 95;
+	}
+
+	actions
+	{
+		Apply Impulse(Event Player, Vector(1, 0, 0), 20, To World, Cancel Contrary Motion);
+		Set Status(Event Player, Null, Rooted, 0.500);
+		Wait(0.500, Ignore Condition);
+		Loop If Condition Is True;
+	}
+}
+
+rule("Start")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	conditions
+	{
+		Is Game In Progress == True;
+		Match Time < 0.050;
+		Global.start != True;
+	}
+
+	actions
+	{
+		Set Match Time(140);
+		Global.start = True;
+		Big Message(All Players(All Teams), Custom String("WATCH OUT"));
+	}
+}
+
+rule("Thomas")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Global.start != True;
+		Is Game In Progress == True;
+		Event Player == Global.tomas;
+	}
+
+	actions
+	{
+		Set Status(Event Player, Null, Knocked Down, 10000);
+		Wait(0.100, Ignore Condition);
+		Loop If(Has Status(Event Player, Knocked Down) != True);
+	}
+}
+
+rule("Thomas")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Global.start == True;
+		Is Game In Progress == True;
+		Event Player == Global.tomas;
+	}
+
+	actions
+	{
+		Clear Status(Event Player, Knocked Down);
+		Wait(0.100, Ignore Condition);
+		Loop If(Has Status(Event Player, Knocked Down) == True);
+	}
+}
+
+rule("Heroes win")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	conditions
+	{
+		Is Game In Progress == True;
+		Global.start == True;
+		Match Time < 0.010;
+	}
+
+	actions
+	{
+		disabled Set Match Time(300);
+		Big Message(All Players(All Teams), Custom String("Runaway Victory"));
+		Wait(2, Ignore Condition);
+		Declare Player Victory(All Living Players(All Teams));
+		Kill(All Players(All Teams), Null);
+	}
+}
+
+rule("Thomas wins")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	conditions
+	{
+		Is Game In Progress == True;
+		Global.start == True;
+		Number Of Living Players(All Teams) == 1;
+	}
+
+	actions
+	{
+		disabled Set Match Time(300);
+		Big Message(All Players(All Teams), Custom String("Thomas Victory"));
+		Wait(2, Ignore Condition);
+		Declare Player Victory(All Living Players(All Teams));
+		Kill(All Players(All Teams), Null);
+	}
+}
+
+rule("Arrows")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Is Alive(Event Player) == True;
+		Event Player != Global.tomas;
+	}
+
+	actions
+	{
+		Create Icon(Global.tomas, Event Player, Arrow: Down, Visible To and Position, Color(Red), True);
+	}
+}
+
+rule("Thomas Leaves Match")
+{
+	event
+	{
+		Player Left Match;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Event Player == Global.tomas;
+		Is Game In Progress == True;
+	}
+
+	actions
+	{
+		Big Message(All Players(All Teams), Custom String("...CHOOSING A NEW THOMAS..."));
+		Global.tomas = Random Value In Array(All Players(All Teams));
+		Global.tomas.tomas = True;
+	}
+}

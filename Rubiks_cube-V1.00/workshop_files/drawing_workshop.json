@@ -1,0 +1,1424 @@
+variables
+{
+	global:
+		26: AA
+		27: AB
+		28: AC
+		29: AD
+		30: AE
+		31: AF
+		32: AG
+		33: AH
+		34: AI
+		35: AJ
+		36: AK
+		37: AL
+		38: AM
+		40: AO
+		42: AQ
+		44: AS
+
+	player:
+		26: AA
+		27: AB
+		29: AD
+		30: AE
+		31: AF
+		32: AG
+		33: AH
+		34: AI
+		35: AJ
+		36: AK
+		37: AL
+		38: AM
+		39: AN
+		40: AO
+		41: AP
+		44: AS
+}
+
+subroutines
+{
+	8: Sub8
+	14: Sub14
+}
+
+rule("inspector value pasted / global var init")
+{
+	event
+	{
+		Subroutine;
+		Sub5;
+	}
+
+	actions
+	{
+		Global.A = Null;
+		Global.B = Array(Vector(-13.842, 13.128, 20), Vector(-17.713, 13.138, 20), Vector(-15.799, 14.920, 20), Vector(-15.799, 11.376,
+			20), Vector(-15.799, 16.680, 20), Vector(-14.300, 10, 20), Vector(-15.800, 10, 20), Vector(-17.300, 10, 20), Vector(-14.300,
+			8.500, 20), Vector(-15.800, 8.500, 20), Vector(-17.300, 8.500, 20), Vector(-14.300, 7, 20), Vector(-15.800, 7, 20), Vector(
+			-17.300, 7, 20), Vector(-14.300, 5.500, 20), Vector(-15.800, 5.500, 20), Vector(-17.300, 5.500, 20));
+		Global.C = Vector(-15.700, 13, 19.900);
+		Global.D = Array(Color(White), Color(Black), Color(White), Color(Red), Color(Orange), Color(Yellow), Color(Green), Color(Aqua),
+			Color(Blue), Color(Violet), Color(Purple), Color(Gray));
+		Global.F = Vector(0, 3, 20);
+		Global.G = Custom String("qwertyuiopasdfghjklzxcvbnm");
+		Global.M = Custom String("");
+		Global.N = True;
+		Global.O = Null;
+		Global.P = Null;
+		Global.Q = False;
+		Global.T = Array(30, 120);
+		Global.V = 120;
+		Global.W = 1;
+		Global.X = 5;
+		Global.Y = False;
+		Global.Z = True;
+		Global.AB = Array(Custom String("Tdgd"), Custom String("로스냥냥이"), Custom String("LEGENO"), Custom String("킹왕짱못봄"), Custom String(
+			"똒또꼮똑"), Custom String("byNan1021"), Custom String("Doljinchoong"));
+		Global.AC = Array(Null, Null, Null, Null, Null, Null, Null, Null, Null);
+		Global.AD = Array(Vector(-141.021, -79.497, 0), Vector(-170.821, -79.409, 0));
+		Global.AO = Array(2, 43, 103, 139, 158, 168, 172, 174);
+		Global.H = Array(Vector(62.034, 40.243, 0), Vector(50.455, 39.798, 0), Vector(37.535, 40.243, 0), Vector(25.356, 39.650, 0),
+			Vector(12.881, 40.540, 0), Vector(0.851, 40.095, 0), Vector(-11.766, 40.688, 0), Vector(-24.093, 40.391, 0), Vector(-35.975,
+			40.243, 0), Vector(-47.856, 39.650, 0), Vector(59.513, 52.273, 0), Vector(46.445, 51.680, 0), Vector(35.008, 51.383, 0),
+			Vector(22.236, 51.531, 0), Vector(10.063, 51.828, 0), Vector(-2.263, 51.680, 0), Vector(-15.331, 51.383, 0), Vector(-26.620,
+			51.235, 0), Vector(-39.391, 50.938, 0), Vector(56.838, 63.111, 0), Vector(44.808, 62.814, 0), Vector(32.042, 62.814, 0),
+			Vector(19.863, 62.221, 0), Vector(7.685, 62.963, 0), Vector(-5.087, 62.963, 0), Vector(-16.968, 63.111, 0), Vector(-60.623,
+			40.095, 0), Vector(-54.240, 52.273, 0));
+	}
+}
+
+rule("banned words")
+{
+	event
+	{
+		Subroutine;
+		Sub6;
+	}
+
+	actions
+	{
+		Global.AE = Empty Array;
+		Modify Global Variable(AE, Append To Array, Custom String("Banned words"));
+	}
+}
+
+rule("unwelcomed words")
+{
+	event
+	{
+		Subroutine;
+		Sub7;
+	}
+
+	actions
+	{
+		Global.AF = Empty Array;
+		Modify Global Variable(AF, Append To Array, Custom String("Unwelcomed words"));
+	}
+}
+
+rule("create text / workshop settings")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	actions
+	{
+		Disable Inspector Recording;
+		Disable Built-In Game Mode Completion;
+		Disable Built-In Game Mode Announcer;
+		Disable Built-In Game Mode Music;
+		Call Subroutine(Sub5);
+		Call Subroutine(Sub6);
+		Call Subroutine(Sub7);
+		Global.N = 0;
+		Global.O = Empty Array;
+		Global.Q = Workshop Setting Toggle(Custom String("Settings"), Custom String("The first correct answer ends the round. (on/off)"),
+			False, 2);
+		Global.R = 0;
+		Global.T = Array(Workshop Setting Integer(Custom String("Settings"), Custom String("Word choice time (for selector)"), 30, 20, 60,
+			10), Workshop Setting Integer(Custom String("Settings"), Custom String(
+			"Time limit to guess the artist's drawing (in seconds)"), 120, 60, 300, 11));
+		Global.U = 0;
+		Global.Z = Workshop Setting Toggle(Custom String("Settings"), Custom String(
+			"The selector will always be picked as the artist. (on/off)"), False, 1);
+		Global.X = Workshop Setting Integer(Custom String("Settings"), Custom String("Maximum number of characters for each word"), 10, 3,
+			20, 12);
+		Global.AA = Workshop Setting Combo(Custom String("Settings"), Custom String(
+			"How will the selector and/or artists be chosen? (in a specific order)"), 0, Array(Custom String("By number"), Custom String(
+			"Randomly among people who guessed the word the previous round"), Custom String(
+			"Whoever the first person was to get the correct word the previous round"), Custom String("At complete random")), 0);
+		Global.AC = Empty Array;
+		Global.AH = Workshop Setting Toggle(Custom String("Settings"), Custom String("Rounds (enable/disable)"), True, -2);
+		Global.AI = Workshop Setting Integer(Custom String("Settings"), Custom String("Number of rounds"), 20, 10, 50, -1);
+		Global.AJ = 1;
+		Global.AL = Workshop Setting Combo(Custom String("Settings"), Custom String("State the correct word via..."), 0, Array(
+			Custom String("Chat + Keyboard"), Custom String("On-screen keyboard only"), Custom String("Chat only")), 0);
+		Global.AS = Workshop Setting Toggle(Custom String("Settings"), Custom String(
+			"Shuffle the order of selectors and artists (on/off)"), True, 4);
+		Set Match Time(5);
+		Wait Until(Is Game In Progress && Global.AC, 99999);
+		Global.V = Global.T[0];
+		Global.P = First Of(Global.AC);
+		Global.P.T = True;
+		Global.P.AI = True;
+		Set Match Time(Global.V);
+		For Global Variable(AQ, 0, 4, 1);
+			Create Beam Effect(Global.AC, Good Beam, Vector(Global.AQ < 2 ? -13 : 13, 15 + (Global.AQ < 2 ? -8 : 3.900), 19.900), Vector(
+				Global.AQ % 2 ? 13 : -13, 15 + (Global.AQ % 2 ? -8 : 3.900), 19.900), Color(Green), Visible To);
+		End;
+		For Global Variable(AQ, 6, Count Of(Global.B), 1);
+			Create In-World Text(Filtered Array(Global.A, Match Time), Custom String("■"), Global.B[Global.AQ] + Down * 1.100, 5, Do Not Clip,
+				Visible To, Global.D[Global.AQ - 5], Default Visibility);
+		End;
+		Global.AQ = False;
+		Create In-World Text(Global.A, Custom String("□"), Global.B[5] + Down * 1.100, 5, Do Not Clip, Visible To and Color,
+			Global.A.G || !Match Time ? False : Color(White), Default Visibility);
+		Create In-World Text(Global.A, Icon String(Trashcan), Global.B[5] + Down * 0.900, 2.500, Do Not Clip, Visible To and Color,
+			Global.A.G && Match Time ? Color(White) : False, Default Visibility);
+		Create Effect(Filtered Array(Local Player, !Is Button Held(Local Player, Button(Ability 1)) && Local Player.S && (
+			Local Player.G || Is Button Held(Local Player, Button(Secondary Fire)))), Good Aura, Color(White), Local Player.A - Vector(0,
+			0, 0.100), Local Player.M, Visible To Position and Radius);
+		Create In-World Text(Filtered Array(Local Player, Is Button Held(Local Player, Button(Ability 1)) && Local Player.S && (
+			Local Player.G || Is Button Held(Local Player, Button(Secondary Fire)))), Icon String(Recycle), Local Player.A - Vector(0,
+			1.500, 0.100), 4, Do Not Clip, Visible To and Position, Color(White), Default Visibility);
+		Create In-World Text(Filtered Array(Local Player, Local Player.T), Local Player.O, Vector(0, 5.700, 20), 2.500, Do Not Clip,
+			Visible To and String, Color(Blue), Default Visibility);
+		Create In-World Text(Filtered Array(Local Player, Local Player.T), Custom String(
+			"Ｑ Ｗ Ｅ Ｒ Ｔ Ｙ Ｕ Ｉ Ｏ Ｐ ←\r\n Ａ Ｓ Ｄ Ｆ Ｇ Ｈ Ｊ Ｋ Ｌ <┘\r\n  Ｚ Ｘ Ｃ Ｖ Ｂ Ｎ Ｍ"), Vector(0, 3, 20), 3, Do Not Clip, Visible To and String,
+			Color(White), Visible Never);
+		If(!Global.AL);
+			Create HUD Text(Global.AC, Null, Global.N ? (Is True For Any(Array(Global.A, Global.P), Current Array Element == Local Player)
+				? Custom String("   Click on one of the players below\n   if their answer in chat was correct.") : Custom String(
+				"Remember, you may also use game\n    chat to enter the correct word.")) : Global.M, Null, Left, 4, Color(White), Color(White),
+				Color(Yellow), Visible To and String, Default Visibility);
+		Else If(Global.AL == 2);
+			Create In-World Text(Global.AC, Global.N ? (Is True For Any(Array(Global.A, Global.P), Current Array Element == Local Player)
+				? Custom String("{0}! Click the correct person (via chat) in the list on the left!", Local Player) : Custom String(
+				"Guess the word with game chat!")) : Global.M, Vector(0, 5, 20), 2.500, Do Not Clip, Visible To and String, Color(White),
+				Default Visibility);
+		End;
+		Create In-World Text(Filtered Array(Global.A, Match Time), Custom String("◀{0}                  {1}▶", Input Binding String(Button(
+			Ultimate)), Input Binding String(Button(Ability 2))), Vector(-15.800, 12.100, 20), 2, Do Not Clip, Visible To and String,
+			Color(Blue), Default Visibility);
+		Create In-World Text(Filtered Array(Global.A, Match Time), Custom String("▲\r\n{0}\r\n\r\n\r\n{1}\r\n▼", Input Binding String(
+			Button(Reload)), Input Binding String(Button(Melee))), Vector(-15.800, 10.900, 20), 2, Do Not Clip, Visible To and String,
+			Color(Blue), Default Visibility);
+		Create In-World Text(Filtered Array(Global.P, !Global.N), Custom String("Enter what to draw! (Maximum of {0} characters)",
+			Global.X), Vector(0, 7, 20), 2, Do Not Clip, Visible To, Color(Blue), Default Visibility);
+		Create In-World Text(Filtered Array(Global.A, Match Time), Custom String("Skip"), Vector(-15.700, 15.500, 20), 3, Do Not Clip,
+			Visible To, Color(White), Default Visibility);
+		Create In-World Text(Local Player, Local Player.AI ? Custom String(" Sensitivity\r\n ◀                 ▶") : Global.M, Vector(
+			-15.700, 17, 20), 2, Do Not Clip, Visible To and String, Color(White), Default Visibility);
+		Create In-World Text(Local Player, Local Player.AI ? Custom String("{0}%", Local Player.AF) : Global.M, Vector(-15.700, 16.900,
+			20), 2, Do Not Clip, Visible To and String, Color(White), Default Visibility);
+		Create Progress Bar In-World Text(Filtered Array(Global.AC, Match Time && Global.A), (Entity Count - 6) / 250 * 100, Null, Vector(
+			0, 18.450, 20), 1.200, Do Not Clip, Array(Color(Green), Color(Red))[Entity Count > 200], Color(White),
+			Visible To Values and Color, Default Visibility);
+		Create In-World Text(Filtered Array(Global.AC, Match Time && Global.A.AI), Custom String("Effect limit {0}/250", Entity Count - 6),
+			Vector(-9.200, 18.800, 20), 1.800, Do Not Clip, Visible To and String, Color(White), Default Visibility);
+		If(Global.AH);
+			Create In-World Text(Global.AC, Custom String("round {0}/{1}", Global.AJ, Global.AI), Vector(-15.700, 18.800, 20), 2, Do Not Clip,
+				Visible To and String, Color(Green), Default Visibility);
+		End;
+		Create In-World Text(Filtered Array(Local Player, Local Player.AI), Custom String("▶"), Update Every Frame(Vector(-0.270, 8.750,
+			20) + 0.100 * Vector(Horizontal Facing Angle Of(Local Player), -1 * Vertical Facing Angle Of(Local Player), 0)), 2.500,
+			Do Not Clip, Visible To Position String and Color, Local Player.D, Default Visibility);
+		Create Progress Bar HUD Text(Filtered Array(Global.AC, Match Time), 100 * (Match Time / Global.V), Custom String("{0}{1}",
+			Global.N ? Global.A : Global.P, Global.N ? (Local Player.S ? Custom String("! Draw [{0}]! ", Global.R) : (
+			Local Player == Global.P ? Custom String(" is currently drawing (the word is: {0})", Global.R) : Custom String(
+			": What is this?"))) : Custom String(" is deciding the word to be drawn. ")), Top, 1, Array(Color(Red), Color(Orange), Color(
+			Green))[Round To Integer(Match Time / Global.V * 3, Down)], Color(Green), Visible To Values and Color, Default Visibility);
+		Create HUD Text(Filtered Array(Host Player, Global.AB), Null, Custom String("{0}+{1}: Delete [{2}] from banned players",
+			Input Binding String(Button(Crouch)), Input Binding String(Button(Ultimate)), Last Of(Global.AB)), Null, Left, 1, Color(White),
+			Color(White), Color(White), Visible To and String, Default Visibility);
+		Create HUD Text(Global.AC, Global.N ? (Match Time ? Custom String(" hint:{0} ", Global.S) : Custom String("the word is: {0} ",
+			Global.R)) : Global.M, Custom String(" \r\n\r\n"), Null, Left, 2, Color(Blue), Color(White), Color(White),
+			Visible To and String, Default Visibility);
+		Create HUD Text(Remove From Array(Global.AC, Host Player), Null, Custom String(" "), Null, Left, 3.100, Color(White), Color(White),
+			Color(White), Visible To, Default Visibility);
+		Create HUD Text(Host Player, Null, Custom String("   If you press {0} on one of the\r\n   players below, they will be banned.",
+			Input Binding String(Button(Secondary Fire))), Null, Left, 3.500, Color(White), Color(White), Color(White),
+			Visible To and String, Default Visibility);
+		Create HUD Text(Global.AC, Null, Null, Custom String("Made by kaeku. Code: NNCNC"), Left, 0.400, Color(White), Color(White), Color(
+			White), Visible To, Default Visibility);
+		Wait(0, Ignore Condition);
+		Pause Match Time;
+		Wait Until(Count Of(Global.AC) > 1, 99999);
+		Unpause Match Time;
+	}
+}
+
+rule("init player")
+{
+	event
+	{
+		Player Joined Match;
+		All;
+		All;
+	}
+
+	actions
+	{
+		Disable Game Mode HUD(Event Player);
+		If(Is True For Any(Global.AE, String Contains(Custom String("{0}", Event Player), Current Array Element)) || Array Contains(
+			Global.AB, Custom String("{0}", Event Player)));
+			If(Event Player == Host Player);
+				Remove Player(Event Player);
+			Else;
+				Disable Text Chat(Event Player);
+				Disable Voice Chat(Event Player, True, True, True);
+				Disable Scoreboard(Event Player);
+				Set Player Allowed Heroes(Event Player, Hero(Reaper));
+				Event Player.AP = True;
+				Wait Until(Has Spawned(Event Player), 99999);
+				Create HUD Text(Event Player, Custom String(" You are banned and cannot participate in the game. "), Custom String("\r\n\r\n"),
+					Null, Top, 0, Color(Red), Color(White), Color(White), None, Default Visibility);
+				Event Player.M = Last Text ID;
+				Set Gravity(Event Player, 0);
+				Teleport(Event Player, Vector(0, 200, 0));
+				Small Message(All Players(All Teams), Custom String("{0} is banned and cannot participate in the game.", Event Player));
+				Start Facing(Event Player, Up, 10000, To World, None);
+				While(Event Player.AP);
+					Press Button(Event Player, Button(Ability 2));
+					Wait(0.016, Ignore Condition);
+				End;
+				Press Button(Event Player, Button(Secondary Fire));
+				Destroy HUD Text(Event Player.M);
+				Set Gravity(Event Player, 100);
+				Enable Text Chat(Event Player);
+				Enable Voice Chat(Event Player);
+				Stop Facing(Event Player);
+				Enable Scoreboard(Event Player);
+				Loop;
+			End;
+		Else;
+			Wait Until(Has Spawned(Event Player), 99999);
+			Modify Global Variable(AC, Append To Array, Event Player);
+			Start Camera(Event Player, Vector(0, 10, 5), Vector(0, 10, 20), 0);
+			Disallow Button(Event Player, Button(Ability 2));
+			Disallow Button(Event Player, Button(Primary Fire));
+			Disallow Button(Event Player, Button(Secondary Fire));
+			Disallow Button(Event Player, Button(Ability 1));
+			Disallow Button(Event Player, Button(Ultimate));
+			Disable Hero HUD(Event Player);
+			Set Damage Received(Event Player, 0);
+			Event Player.J = Vector(0, 0, 0);
+			Event Player.M = 0.800;
+			Event Player.O = Global.M;
+			Teleport(Event Player, Vector((1 + Round To Integer(Slot Of(Event Player) / 2, Down)) * (Slot Of(Event Player) % 2 ? 2 : -2), 0,
+				19));
+			Event Player.D = Color(White);
+			Create In-World Text(Global.AC, Custom String("{0}{1} {2}", Global.AA ? Global.M : Custom String("{0}. ", 1 + Index Of Array Value(
+				Global.AC, Event Player)), Event Player, Custom String("{0} {1}{2}", Global.AH ? Custom String("({0} points)", Score Of(
+				Event Player)) : Global.M, Event Player == Global.A ? Custom String("is drawing") : (Event Player == Global.P ? Custom String(
+				"(Selector)") : (Event Player.AM ? Custom String("got the word") : (
+				Global.AL != 1 && Global.N && Match Time && Is True For Any(Array(Global.A, Global.P), Current Array Element == Local Player)
+				&& Local Player.AN == Slot Of(Event Player) ? Custom String("Correct! {0}", Input Binding String(Button(Primary Fire)))
+				: Global.M))), Event Player != Host Player && Local Player == Host Player && Local Player.AN == Slot Of(Event Player)
+				? Custom String("|{0} Ban", Input Binding String(Button(Secondary Fire))) : Global.M)), Vector(15.800, 15 - 0.500 * Slot Of(
+				Event Player), 20), 1, Do Not Clip, Visible To String and Color, Event Player == Global.A ? Color(Blue) : (
+				Event Player == Global.P ? Color(Green) : (Event Player.AM || (Global.AL != 1 && Match Time && Is True For Any(Array(Global.A,
+				Global.P), Current Array Element == Local Player) && Local Player.AN == Slot Of(Event Player)) ? Color(Yellow) : Color(
+				White))), Default Visibility);
+			Create In-World Text(Global.AC, Event Player.R > Total Time Elapsed ? Custom String("{0}: {1}?", Event Player, Event Player.AE)
+				: Global.M, Eye Position(Event Player) + Vector(0, 0.500 + 0.100 * Sine From Radians(Total Time Elapsed * 10), 0), 2,
+				Do Not Clip, Visible To Position and String, Color(Green), Default Visibility);
+			If(Event Player == Host Player || (Global.AL < 2 && Global.N));
+				Skip If(Global.AL == 2, 2);
+				Event Player.T = True;
+				Wait(0.016, Ignore Condition);
+				Event Player.AI = True;
+			End;
+			Start Forcing Player Outlines(Global.AC, Global.AC, False, Color(White), Default);
+			Start Scaling Player(Event Player, 1.500, True);
+			Start Transforming Throttle(Event Player, 1, 0.010, Forward);
+			Event Player.AF = 100;
+			Set Jump Vertical Speed(Event Player, 150);
+			Set Player Health(Event Player, Max Health(Event Player));
+			Event Player.AJ = 0.600;
+			Set Aim Speed(Event Player, 150);
+		End;
+	}
+}
+
+rule("init drawer")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Event Player.S != Event Player.X;
+	}
+
+	actions
+	{
+		Event Player.X = !Event Player.X;
+		If(Event Player.X);
+			Event Player.A = Vector(0, 0, 0);
+			Chase Player Variable At Rate(Event Player, A, Vector(0, 10, 19.900) + 0.100 * Vector(Horizontal Facing Angle Of(Event Player),
+				-1 * Vertical Facing Angle Of(Event Player), 0), 10000, Destination and Rate);
+			Event Player.B = Empty Array;
+			Event Player.C = 0.200;
+			Event Player.D = Color(Black);
+			Event Player.AN = -1;
+			Call Subroutine(Sub0);
+		Else;
+			Destroy Effect(Event Player.K);
+			For Player Variable(Event Player, F, 0, Count Of(Event Player.B), 1);
+				Destroy Effect(Event Player.B[Event Player.F][2]);
+			End;
+			Event Player.B = Empty Array;
+			Event Player.G = False;
+			Event Player.I = False;
+			Destroy Effect(Event Player.AK);
+			Stop Chasing Player Variable(Event Player, A);
+		End;
+		Set Melee Enabled(Event Player, !Event Player.X);
+	}
+}
+
+rule("point")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Event Player.S == True;
+		Is Button Held(Event Player, Button(Primary Fire)) == True;
+		Absolute Value(X Component Of(Event Player.A)) < 13;
+		Absolute Value(12.950 - Y Component Of(Event Player.A)) < 5.950;
+		Entity Count < 256;
+		Event Player.H == True;
+		Event Player.G == False;
+		Match Time == True;
+	}
+
+	actions
+	{
+		Event Player.AD = True;
+		If(Event Player.H == 4 || !(Event Player.AL || Is Button Held(Event Player, Button(Ability 1))));
+			If(Distance Between(Event Player.A, Event Player.J) > Event Player.C);
+				If(Event Player.H == 1);
+					Create Effect(Global.AC, Sphere, Event Player.D, Event Player.A, Event Player.C, Visible To);
+				Else If(Event Player.H == 2);
+					Create Effect(Global.AC, Cloud, Event Player.D, Event Player.A, Event Player.C, Visible To);
+				Else If(Event Player.H == 3);
+					Create Effect(Global.AC, Good Aura, Event Player.D, Event Player.A, Event Player.C, Visible To);
+				Else If(Event Player.H == 4);
+					Create Effect(Global.AC, Orb, Event Player.D, Event Player.A, 1, Visible To);
+				End;
+				Modify Player Variable(Event Player, B, Append To Array, Array(Array(Event Player.A, Event Player.C, Last Created Entity)));
+				Event Player.J = Event Player.A;
+			End;
+		End;
+		Wait(0.016, Ignore Condition);
+		Loop If Condition Is True;
+		Event Player.AD = False;
+		If(!Is Button Held(Event Player, Button(Ability 1)));
+			Event Player.J = Vector(0, 0, 0);
+		End;
+	}
+}
+
+rule("line")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		(Event Player.S && Entity Count <= 256 && Match Time && Is Button Held(Event Player, Button(Primary Fire))
+			&& !Event Player.H && Absolute Value(X Component Of(Event Player.A)) < 13 && Absolute Value(12.950 - Y Component Of(
+			Event Player.A)) < 5.950) != (Event Player.I == True);
+		Event Player.G == False;
+	}
+
+	actions
+	{
+		Event Player.I = !Event Player.I;
+		Play Effect(Event Player, Buff Explosion Sound, Color(White), Vector(0, 10, 0), 10);
+		If(!Event Player.I && Distance Between(Event Player.A, Event Player.J) > 0.100);
+			Call Subroutine(Sub4);
+		End;
+		Event Player.J = Event Player.I ? Event Player.A : Vector(0, 0, 0);
+	}
+}
+
+rule("curve")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Entity Count < 256;
+		Event Player.I == True;
+		Distance Between(Event Player.A, Event Player.J) > Event Player.AJ;
+		Is Button Held(Event Player, Button(Ability 1)) == False;
+	}
+
+	actions
+	{
+		Call Subroutine(Sub4);
+		Event Player.J = Event Player.A;
+		Wait(0.016, Ignore Condition);
+		Loop If Condition Is True;
+	}
+}
+
+rule("drawing by shift")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Event Player.X == True;
+		Event Player.H != 4;
+		(!(Event Player.H && Event Player.H != 2 && Event Player.J && (Absolute Value(X Component Of(Event Player.A + Event Player.J) / 2)
+			> 13 - Distance Between(Event Player.A, Event Player.J) / 2 || Absolute Value(12.950 - Y Component Of(
+			Event Player.A + Event Player.J) / 2) > 5.950 - Distance Between(Event Player.A, Event Player.J) / 2)) && Is Button Held(
+			Event Player, Button(Ability 1)) && (Event Player.I || Event Player.AD)) != Event Player.AL;
+	}
+
+	actions
+	{
+		Event Player.AL = !Event Player.AL;
+		If(Event Player.AL);
+			Event Player.J = Event Player.A;
+			If(Event Player.H == 1);
+				Create Effect(Global.AC, Sphere, Event Player.D, (Event Player.A + Evaluate Once(Event Player.J)) / 2, Distance Between(
+					Event Player.A, Evaluate Once(Event Player.J)) / 2, Visible To Position and Radius);
+			Else If(Event Player.H == 2);
+				Create Effect(Global.AC, Cloud, Event Player.D, (Event Player.A + Evaluate Once(Event Player.J)) / 2, Distance Between(
+					Event Player.A, Evaluate Once(Event Player.J)) / 2, Visible To Position and Radius);
+			Else If(Event Player.H == 3);
+				Create Effect(Global.AC, Good Aura, Event Player.D, (Event Player.A + Evaluate Once(Event Player.J)) / 2, Distance Between(
+					Event Player.A, Evaluate Once(Event Player.J)) / 2, Visible To Position and Radius);
+			Else If(Event Player.D == Color(Black));
+				Create Beam Effect(Global.AC, Grapple Beam, Evaluate Once(Event Player.J), Event Player.A, Color(White), Position and Radius);
+			Else;
+				Create Beam Effect(Global.AC, Good Beam, Evaluate Once(Event Player.J), Event Player.A, Event Player.D, Position and Radius);
+			End;
+			Event Player.AK = Last Created Entity;
+		Else;
+			Destroy Effect(Event Player.AK);
+			If(Event Player.J);
+				If(Event Player.H);
+					If(Event Player.H == 1);
+						Create Effect(Global.AC, Sphere, Event Player.D, (Event Player.A + Event Player.J) / 2, Distance Between(Event Player.A,
+							Event Player.J) / 2, Visible To);
+					Else If(Event Player.H == 2);
+						Create Effect(Global.AC, Cloud, Event Player.D, (Event Player.A + Event Player.J) / 2, Distance Between(Event Player.A,
+							Event Player.J) / 2, Visible To);
+					Else If(Event Player.H == 3);
+						Create Effect(Global.AC, Good Aura, Event Player.D, (Event Player.A + Event Player.J) / 2, Distance Between(Event Player.A,
+							Event Player.J) / 2, Visible To);
+					Else If(Event Player.H == 4);
+						Create Effect(Global.AC, Orb, Event Player.D, (Event Player.A + Event Player.J) / 2, Distance Between(Event Player.A,
+							Event Player.J) / 2, Visible To);
+					End;
+					Modify Player Variable(Event Player, B, Append To Array, Array(Array((Event Player.A + Event Player.J) / 2, Distance Between(
+						Event Player.A, Event Player.J) / 2, Last Created Entity)));
+					Play Effect(Event Player, Buff Explosion Sound, Color(White), Vector(0, 10, 0), 10);
+				Else If(Is Button Held(Event Player, Button(Primary Fire)));
+					Call Subroutine(Sub4);
+				End;
+			End;
+			Event Player.J = Vector(0, 0, 0);
+		End;
+		Wait(0, Ignore Condition);
+		Loop If Condition Is True;
+	}
+}
+
+rule("change effects")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Event Player.S == True;
+		Is True For Any(Array(Button(Primary Fire), Button(Ability 2), Button(Ultimate), Button(Reload), Button(Melee)), Is Button Held(
+			Event Player, Current Array Element)) == True;
+		Match Time == True;
+	}
+
+	actions
+	{
+		Event Player.E = Index Of Array Value(Global.B, Filtered Array(Global.B, Distance Between(Current Array Element, Event Player.A)
+			< 0.500));
+		Abort If(Is Button Held(Event Player, Button(Primary Fire)) && Event Player.E < 0);
+		If(Is Button Held(Event Player, Button(Ultimate)) || Is Button Held(Event Player, Button(Ability 2)) || Absolute Value(
+			Event Player.E - 0.500) == 0.500);
+			If(Event Player.G);
+				Event Player.D = Event Player.L;
+				Event Player.G = False;
+			End;
+			Event Player.H = (Event Player.H + (Event Player.E > 0 || Is Button Held(Event Player, Button(Ability 2)) ? 1 : 4)) % 5;
+			Call Subroutine(Sub0);
+		Else If(Is Button Held(Event Player, Button(Reload)) || Is Button Held(Event Player, Button(Melee)) || Absolute Value(
+				Event Player.E - 2.500) == 0.500);
+			If(Is Button Held(Event Player, Button(Secondary Fire)) || Event Player.G);
+				Event Player.M = Max(Min(Event Player.M + (Is Button Held(Event Player, Button(Reload)) || Event Player.E == 2 ? 0.100 : -0.100),
+					1.300), 0.200);
+			Else If(Event Player.H);
+				Event Player.C = Max(Min(Event Player.C + (Is Button Held(Event Player, Button(Reload)) || Event Player.E == 2 ? 0.100 : -0.100),
+					1), 0.100);
+			Else;
+				Event Player.AJ = Max(Min(Event Player.AJ + (Is Button Held(Event Player, Button(Reload)) || Event Player.E == 2 ? 0.200 : -0.200),
+					2), 0.200);
+			End;
+		Else If(Event Player.E == 4);
+			Set Match Time(0);
+			Small Message(All Players(All Teams), Custom String("Skipped"));
+		Else;
+			Skip If(Event Player.G, 1);
+			Event Player.L = Event Player.D;
+			Event Player.D = Global.D[Event Player.E - 5];
+			If(Event Player.E == 5);
+				If(Event Player.G);
+					For Player Variable(Event Player, F, 0, Count Of(Event Player.B), 1);
+						Destroy Effect(Event Player.B[Event Player.F][2]);
+					End;
+					Event Player.D = Event Player.L;
+					Event Player.G = False;
+					Event Player.B = Empty Array;
+					Call Subroutine(Sub0);
+				Else;
+					Destroy Effect(Event Player.K);
+					Event Player.G = True;
+					Create Effect(Event Player, Good Aura, Color(White), Global.C - Vector(0, 0, 0.100), Event Player.M,
+						Visible To Position Radius and Color);
+					Event Player.K = Last Created Entity;
+				End;
+			Else;
+				If(Event Player.G);
+					Event Player.G = False;
+				End;
+				Call Subroutine(Sub0);
+			End;
+		End;
+		Play Effect(Event Player, Buff Explosion Sound, Color(White), Vector(0, 10, 0), 10);
+		Skip If(Event Player.W, 2);
+		Wait(0.400, Abort When False);
+		Event Player.W = True;
+		Wait(0.050, Ignore Condition);
+		Loop If Condition Is True;
+		Event Player.W = False;
+	}
+}
+
+rule("effect sub")
+{
+	event
+	{
+		Subroutine;
+		Sub0;
+	}
+
+	actions
+	{
+		Destroy Effect(Event Player.K);
+		If(Event Player.H == 1);
+			Create Effect(Event Player, Sphere, Event Player.D, Global.C, Event Player.C, Visible To Position Radius and Color);
+		Else If(Event Player.H == 2);
+			Create Effect(Event Player, Cloud, Event Player.D, Global.C, Event Player.C, Visible To Position Radius and Color);
+		Else If(Event Player.H == 3);
+			Create Effect(Event Player, Good Aura, Event Player.D, Global.C, Event Player.C, Visible To Position Radius and Color);
+		Else If(Event Player.H == 4);
+			Create Effect(Event Player, Orb, Event Player.D, Global.C, 1, Visible To Position Radius and Color);
+		Else If(Event Player.D == Color(Black));
+			Create Beam Effect(Event Player, Grapple Beam, Global.C - Left * Event Player.AJ / 2, Global.C + Left * Event Player.AJ / 2, Color(
+				White), Visible To Position and Radius);
+		Else;
+			Create Beam Effect(Event Player, Good Beam, Global.C - Left * Event Player.AJ / 2, Global.C + Left * Event Player.AJ / 2,
+				Event Player.D, Visible To Position Radius and Color);
+		End;
+		Event Player.K = Last Created Entity;
+	}
+}
+
+rule("effect sub")
+{
+	event
+	{
+		Subroutine;
+		Sub4;
+	}
+
+	actions
+	{
+		Abort If(!Event Player.J);
+		If(Event Player.D == Color(Black));
+			Create Beam Effect(Global.AC, Grapple Beam, Event Player.J, Event Player.A, Color(White), Visible To);
+		Else;
+			Create Beam Effect(Global.AC, Good Beam, Event Player.J, Event Player.A, Event Player.D, Visible To);
+		End;
+		Modify Player Variable(Event Player, B, Append To Array, Array(Array(Event Player.J, Event Player.A, Last Created Entity,
+			Direction Towards(Event Player.J, Event Player.A))));
+	}
+}
+
+rule("effect max")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	conditions
+	{
+		Entity Count == 256;
+	}
+
+	actions
+	{
+		Small Message(Global.A, Custom String("You have hit the maximum effect count. Erase something to keep drawing."));
+		Play Effect(Global.A, Buff Impact Sound, Color(White), Vector(0, 10, 0), 50);
+	}
+}
+
+rule("eraser")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Event Player.S == True;
+		((Is Button Held(Event Player, Button(Primary Fire)) && Event Player.G) || Is Button Held(Event Player, Button(Secondary Fire)))
+			== True;
+		Absolute Value(X Component Of(Event Player.A)) < 13;
+		Absolute Value(12.950 - Y Component Of(Event Player.A)) < 5.950;
+		Is Button Held(Event Player, Button(Ability 1)) == False;
+		Match Time == True;
+	}
+
+	actions
+	{
+		Event Player.E = Filtered Array(Event Player.B, Distance Between(Event Player.A, Current Array Element[3] ? (Angle Between Vectors(
+			Current Array Element[3], Direction Towards(Current Array Element, Event Player.A)) > 90 ? Current Array Element : (
+			Angle Between Vectors(-1 * Current Array Element[3], Direction Towards(Current Array Element[1], Event Player.A))
+			> 90 ? Current Array Element[1] : Current Array Element + Current Array Element[3] * Dot Product(Current Array Element[3],
+			Vector Towards(Current Array Element, Event Player.A)))) : Current Array Element) < Event Player.M + (
+			Current Array Element[3] ? 0 : Current Array Element[1]));
+		For Player Variable(Event Player, F, 0, Count Of(Event Player.E), 1);
+			Destroy Effect(Event Player.E[Event Player.F][2]);
+		End;
+		Modify Player Variable(Event Player, B, Remove From Array By Value, Event Player.E);
+		Wait(0.016, Ignore Condition);
+		Loop If Condition Is True;
+		If(!Event Player.B);
+			Play Effect(Event Player, Debuff Impact Sound, Color(White), Vector(0, 10, 0), 10);
+			If(Event Player.G);
+				Event Player.D = Event Player.L;
+			End;
+			Event Player.G = False;
+			Call Subroutine(Sub0);
+		End;
+	}
+}
+
+rule("eraser2")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Event Player.S == True;
+		((Is Button Held(Event Player, Button(Primary Fire)) && Event Player.G) || Is Button Held(Event Player, Button(Secondary Fire)))
+			== True;
+		Is Button Held(Event Player, Button(Ability 1)) == True;
+		Match Time == True;
+	}
+
+	actions
+	{
+		Destroy Effect(Last Of(Event Player.B)[2]);
+		Modify Player Variable(Event Player, B, Remove From Array By Index, Count Of(Event Player.B) - 1);
+		Skip If(Event Player.W, 3);
+		Play Effect(Event Player, Debuff Impact Sound, Color(White), Vector(0, 10, 0), 10);
+		Wait(0.400, Abort When False);
+		Event Player.W = True;
+		If(Event Player.B);
+			Wait(0.050, Ignore Condition);
+			Loop If Condition Is True;
+		Else;
+			Play Effect(Event Player, Debuff Impact Sound, Color(White), Vector(0, 10, 0), 10);
+			If(Event Player.G);
+				Event Player.D = Event Player.L;
+			End;
+			Event Player.G = False;
+			Call Subroutine(Sub0);
+		End;
+		Event Player.W = False;
+	}
+}
+
+rule("click")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Is Button Held(Event Player, Button(Primary Fire)) == True;
+		Event Player.T == True;
+		Is True For Any(Global.H, Distance Between(Vector(Horizontal Facing Angle Of(Event Player), Vertical Facing Angle Of(Event Player),
+			0), Current Array Element) < 10) == True;
+	}
+
+	actions
+	{
+		Event Player.N = Index Of Array Value(Global.H, First Of(Sorted Array(Global.H, Distance Between(Current Array Element, Vector(
+			Horizontal Facing Angle Of(Event Player), Vertical Facing Angle Of(Event Player), 0)))));
+		If(Event Player.N == 26);
+			Event Player.O = String Slice(Event Player.O, 0, String Length(Event Player.O) - 1);
+		Else If(Event Player.N == 27);
+			Call Subroutine(Sub3);
+		Else If(String Length(Event Player.O) < Global.X);
+			Event Player.O = Custom String("{0}{1}", Event Player.O, Char In String(Global.G, Event Player.N));
+		End;
+		Play Effect(Event Player, Buff Explosion Sound, Color(White), Vector(0, 10, 0), 10);
+		Wait(0.100, Ignore Condition);
+		Skip If(Event Player.P, 2);
+		Wait(0.300, Abort When False);
+		Event Player.P = True;
+		Loop If Condition Is True;
+		Event Player.P = False;
+	}
+}
+
+rule("erase")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Is Button Held(Event Player, Button(Secondary Fire)) == True;
+		Event Player.T == True;
+	}
+
+	actions
+	{
+		Event Player.O = String Slice(Event Player.O, 0, String Length(Event Player.O) - 1);
+	}
+}
+
+rule("shift")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		(Event Player.T && Is Button Held(Event Player, Button(Ability 1))) != Event Player.AH;
+	}
+
+	actions
+	{
+		Event Player.AH = !Event Player.AH;
+		Event Player.V = Event Player.AH;
+	}
+}
+
+rule("hint")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	conditions
+	{
+		Match Time < Global.V / 2 ^ Global.W;
+		Global.N == True;
+		Global.W < 5;
+		Match Time == True;
+	}
+
+	actions
+	{
+		If(Global.W < Global.AK);
+			Global.S = Custom String("{0}{1}", String Slice(Global.S, 0, 2 * (Global.AK - Global.W)), String Slice(Global.R,
+				Global.AK - Global.W, Global.W));
+		End;
+		Play Effect(All Players(All Teams), Buff Explosion Sound, Color(White), Vector(0, 10, 0), 50);
+		Global.W += 1;
+	}
+}
+
+rule("enter a word")
+{
+	event
+	{
+		Subroutine;
+		Sub3;
+	}
+
+	actions
+	{
+		Abort If(!Event Player.O);
+		If(Is True For Any(Global.AE, String Contains(Event Player.O, Current Array Element)));
+			Small Message(All Players(All Teams), Custom String("{0} was kicked for typing inappropriate words. ", Event Player));
+			Modify Global Variable(AB, Append To Array, Custom String("{0}", Event Player));
+			Wait(1, Ignore Condition);
+			Remove Player(Event Player);
+		Else If(Is True For Any(Global.AF, String Contains(Event Player.O, Current Array Element)));
+			Small Message(Event Player, Custom String("That word is inappropriate."));
+		Else If(Global.N);
+			If(Is True For Any(Append To Array(Array(Global.R), Global.Y ? Global.U : Empty Array), Current Array Element == Event Player.O));
+				Modify Player Score(Event Player, Global.AH ? 5 - Global.W : 1);
+				If(!Global.O);
+					Big Message(Global.AC, Custom String("{0}: i got it!", Event Player));
+					Play Effect(All Players(All Teams), Sombra EMP Explosion Effect, Color(White), Event Player, 1);
+					Create Effect(All Players(All Teams), Echo Cloning Effect, Color(White), Event Player, 1.500, Visible To Position and Radius);
+					Global.AM = Last Created Entity;
+				Else;
+					Small Message(Global.AC, Custom String("{0}: i got it!", Event Player));
+				End;
+				Modify Global Variable(O, Append To Array, Event Player);
+				Event Player.AM = True;
+				Event Player.T = False;
+				Skip If(Event Player == Host Player, 1);
+				Event Player.AI = False;
+				Set Match Time(Global.Q ? 0 : Match Time * (Count Of(Filtered Array(Global.AC, Current Array Element.T)) / (Count Of(
+					Filtered Array(Global.AC, Current Array Element.T)) + 1)));
+			Else;
+				Event Player.R = Total Time Elapsed + 3;
+				Event Player.AE = Event Player.O;
+				Small Message(Event Player, Custom String("Wrong.."));
+				Play Effect(Event Player, Debuff Impact Sound, Color(White), Vector(0, 10, 5), 30);
+			End;
+		Else;
+			Global.R = Event Player.O;
+			Call Subroutine(Sub14);
+		End;
+		Event Player.Y = 0;
+		Event Player.U = False;
+		Event Player.AB = False;
+		Event Player.AA = False;
+		Play Effect(Global.AC, Ring Explosion Sound, Color(White), Global.F, 30);
+		Wait(0.250, Ignore Condition);
+		Event Player.O = Global.M;
+	}
+}
+
+rule("enter a word (jump)")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Event Player.T == True;
+		Is Button Held(Event Player, Button(Jump)) == True;
+	}
+
+	actions
+	{
+		Call Subroutine(Sub3);
+	}
+}
+
+rule("choose artist / start round")
+{
+	event
+	{
+		Subroutine;
+		Sub14;
+	}
+
+	actions
+	{
+		Global.V = Global.T[1];
+		Set Match Time(Global.V);
+		Global.AK = String Length(Global.R);
+		Global.U = Global.M;
+		If(Global.AG || Global.Z || Count Of(Global.AC) < 4);
+			Global.P = False;
+			Global.A = Event Player;
+		Else If(!Global.AA);
+			Global.A = Global.AC[Global.AC[1 + Index Of Array Value(Global.AC, Global.P)] ? 1 + Index Of Array Value(Global.AC, Global.P) : 0];
+		Else If(!Global.O || Global.AA == 3);
+			Global.A = Random Value In Array(Remove From Array(Global.AC, Global.P));
+		Else If(Global.AA == 1);
+			Global.A = Global.O[Round To Integer(Random Real(0, 0.999) ^ 3 * Count Of(Global.O), Down)];
+		Else;
+			Global.A = First Of(Global.O);
+		End;
+		Global.AG = False;
+		Global.O = Empty Array;
+		Global.A.S = True;
+		Global.S = Global.M;
+		Global.W = 0;
+		Skip If(Global.AL == 2, 1);
+		Remove From Array(Global.AC, Global.A).T = True;
+		Global.A.T = False;
+		Skip If(Global.AL == 2, 1);
+		Host Player.AI = False;
+		For Global Variable(AQ, 0, Global.AK, 1);
+			Global.S = Custom String("{0}{1}", Global.S, Custom String(" _"));
+		End;
+		Event Player.Z = Global.M;
+		Event Player.T = False;
+		Event Player.AN = -1;
+		Small Message(Event Player, Custom String("You have entered the correct word."));
+		Event Player.AI = False;
+		Wait(0.250, Ignore Condition);
+		Global.AC.AI = True;
+		Big Message(Remove From Array(Global.AC, Global.A), Custom String("It's {0}'s turn to draw!", Global.A));
+		Big Message(Global.A, Custom String("{0}! Draw {1}!", Global.A, Global.R));
+		Global.N = True;
+	}
+}
+
+rule("preparing for correct answer recognition")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		((Global.AL != 1 && Global.N && Is True For Any(Array(Global.A, Global.P), Current Array Element == Event Player)) || (
+			Event Player == Host Player)) == True;
+		Event Player.AN != (Absolute Value(Horizontal Facing Angle Of(Event Player) - 157) < 13 && Absolute Value(Vertical Facing Angle Of(
+			Event Player) + 30) < 30 ? Round To Integer((Vertical Facing Angle Of(Event Player) + 60) / 5, To Nearest) : -1);
+	}
+
+	actions
+	{
+		Event Player.AN = Absolute Value(Horizontal Facing Angle Of(Event Player) - 157) < 13 && Absolute Value(Vertical Facing Angle Of(
+			Event Player) + 30) < 30 ? Round To Integer((Vertical Facing Angle Of(Event Player) + 60) / 5, To Nearest) : -1;
+		Wait(0.016, Ignore Condition);
+		Loop If Condition Is True;
+	}
+}
+
+rule("recognition of correct answer")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Global.N == True;
+		Is True For Any(Array(Global.A, Global.P), Current Array Element == Event Player) == True;
+		Is Button Held(Event Player, Button(Primary Fire)) == True;
+		Match Time == True;
+		Global.AL != 1;
+	}
+
+	actions
+	{
+		Event Player.AO = Players In Slot(Event Player.AN, All Teams);
+		Abort If(Is True For Any(Array(Global.A, Global.P), Current Array Element == Event Player.AO)
+			|| Event Player.AO.AM || !Has Spawned(Event Player.AO) || Absolute Value(Horizontal Facing Angle Of(Event Player) - 157)
+			> 13 || Absolute Value(Vertical Facing Angle Of(Event Player) + 42) > 30);
+		Modify Player Score(Event Player.AO, Global.AH ? 5 - Global.W : 1);
+		Big Message(All Players(All Teams), Custom String("{0}: i got it!", Event Player.AO));
+		If(Global.AA);
+			Modify Global Variable(O, Append To Array, Event Player.AO);
+		Else;
+			Global.O = Global.AC[Global.AC[1 + Index Of Array Value(Global.AC, Global.A)] ? 1 + Index Of Array Value(Global.AC, Global.A) : 0];
+		End;
+		Event Player.AO.AM = True;
+		Event Player.AO.T = False;
+		Event Player.AO.AI = False;
+		Set Match Time(0);
+		Wait(0.250, Ignore Condition);
+		Small Message(All Players(All Teams), Custom String("The artist submitted {0} as correct.", Event Player.AO));
+		Call Subroutine(Sub8);
+	}
+}
+
+rule("ban players")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	conditions
+	{
+		Is Button Held(Host Player, Button(Secondary Fire)) == True;
+	}
+
+	actions
+	{
+		Host Player.AO = Players In Slot(Host Player.AN, All Teams);
+		Abort If(Host Player.AN < 0 || Host Player == Host Player.AO || !Array Contains(Global.AC, Host Player.AO));
+		Modify Global Variable(AB, Append To Array, Custom String("{0}", Host Player.AO));
+		Remove Player(Host Player.AO);
+		Small Message(All Players(All Teams), Custom String("{0} was banned from the game.", Host Player.AO));
+		Enable Inspector Recording;
+		Disable Inspector Recording;
+	}
+}
+
+rule("remove from banned players")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	conditions
+	{
+		Is Button Held(Host Player, Button(Crouch)) == True;
+		Is Button Held(Host Player, Button(Ultimate)) == True;
+		Global.AB == True;
+	}
+
+	actions
+	{
+		Small Message(All Players(All Teams), Custom String("{0} was removed from the banned player list.", Last Of(Global.AB)));
+		Wait(0.250, Ignore Condition);
+		Filtered Array(All Players(All Teams), Last Of(Global.AB) == Custom String("{0}", Current Array Element)).AP = False;
+		Set Player Allowed Heroes(Filtered Array(All Players(All Teams), Last Of(Global.AB) == Custom String("{0}",
+			Current Array Element)), All Heroes);
+		Kill(Filtered Array(All Players(All Teams), Last Of(Global.AB) == Custom String("{0}", Current Array Element)), Null);
+		Modify Global Variable(AB, Remove From Array By Index, Count Of(Global.AB) - 1);
+		Enable Inspector Recording;
+		Disable Inspector Recording;
+	}
+}
+
+rule("end round")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	conditions
+	{
+		Match Time == False;
+		Count Of(Global.AC) > 1;
+	}
+
+	actions
+	{
+		Play Effect(Global.AC, Buff Explosion Sound, Color(White), Vector(0, 10, 0), 50);
+		If(Global.N);
+			Big Message(Global.AC, Custom String("The correct answer was [{0}]!", Global.R));
+			Global.AC.T = False;
+			Global.AC.AI = False;
+			Global.AC.Z = Global.M;
+			Global.AC.O = Global.M;
+			Global.AC.Y = 0;
+			Global.AC.U = False;
+			Global.AC.AB = False;
+			Global.AC.AA = False;
+			Host Player.AI = True;
+			Destroy Effect(Global.A.K);
+			Wait(7, Ignore Condition);
+			Destroy Effect(Global.AM);
+			Global.AJ += 1;
+			If(Global.AH && Global.AJ > Global.AI);
+				Declare Player Victory(Last Of(Sorted Array(Global.AC, Score Of(Current Array Element))));
+				Wait(2, Ignore Condition);
+				Restart Match;
+			Else;
+				Global.V = Global.T[0];
+				Global.A.S = False;
+				Global.A.D = Color(White);
+				Global.AC.AM = False;
+				Global.N = False;
+				Wait(0.016, Ignore Condition);
+				Set Match Time(Global.V);
+				If(Global.AG || !Entity Exists(Global.A));
+					Global.P = Global.AC[Global.AC[Index Of Array Value(Global.AC, Global.A) + 1] ? Index Of Array Value(Global.AC, Global.A) + 1 : 0];
+				Else If(!(Global.Z || Count Of(Global.AC) < 4));
+					Global.P = Global.A;
+				Else If(!Global.AA);
+					Global.P = Global.AC[Global.AC[Index Of Array Value(Global.AC, Global.A) + 1] ? Index Of Array Value(Global.AC, Global.A) + 1 : 0];
+				Else If(!Global.O || Global.AA == 3);
+					Global.P = Random Value In Array(Remove From Array(Global.AC, Array(Global.A, Global.P)));
+				Else If(Global.AA == 1);
+					Global.P = Global.O[Round To Integer(Random Real(0, 0.999) ^ 3 * Count Of(Global.O), Down)];
+				Else;
+					Global.P = First Of(Global.O);
+				End;
+				If(Global.AA);
+					Global.AG = False;
+				End;
+				Global.A = False;
+			End;
+		Else;
+			Global.V = Global.T[0];
+			Set Match Time(Global.V);
+			Global.P.Z = Global.M;
+			Global.P.Y = 0;
+			Global.P.U = False;
+			Global.P.AB = False;
+			Global.P.AA = False;
+			Global.P.O = Global.M;
+			Global.P.T = False;
+			Global.P.G = False;
+			Global.P.AI = False;
+			Global.P = Global.AA ? Random Value In Array(Remove From Array(Global.AC, Array(Global.A, Global.P)))
+				: Global.AC[Global.AC[Index Of Array Value(Global.AC, Global.P) + 1] ? Index Of Array Value(Global.AC, Global.P) + 1 : 0];
+			Global.AG = True;
+		End;
+		If(Global.AS && !(Global.AA || Index Of Array Value(Global.AC, Global.P)));
+			Global.AC = Randomized Array(Global.AC);
+			Global.P = First Of(Global.AC);
+			Global.AG = False;
+			Small Message(Global.AC, Custom String("The order of selectors and artists has been shuffled."));
+		End;
+		Global.P.T = True;
+		Host Player.AI = False;
+		Global.P.AN = -1;
+		Wait(0.250, Ignore Condition);
+		Global.P.AI = True;
+		Host Player.AI = True;
+		Big Message(Global.AC, Custom String("{0} decides what's next to draw! ", Global.P));
+	}
+}
+
+rule("sensitivity control")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Event Player.AI == True;
+		Is Button Held(Event Player, Button(Primary Fire)) == True;
+		Is True For Any(Global.AD, Distance Between(Current Array Element, Vector(Horizontal Facing Angle Of(Event Player),
+			Vertical Facing Angle Of(Event Player), 0)) < 7) == True;
+	}
+
+	actions
+	{
+		Play Effect(Event Player, Buff Impact Sound, Color(White), Vector(0, 10, 0), 10);
+		Event Player.AF = Min(Max(50, Event Player.AF + (Index Of Array Value(Global.AD, Sorted Array(Global.AD, Distance Between(
+			Current Array Element, Vector(Horizontal Facing Angle Of(Event Player), Vertical Facing Angle Of(Event Player), 0))))
+			? 10 : -10)), 200);
+		Set Aim Speed(Event Player, Event Player.AF * 1.500);
+		Wait(0.100, Ignore Condition);
+		Skip If(Event Player.AG, 2);
+		Wait(0.300, Abort When False);
+		Event Player.AG = True;
+		Loop If Condition Is True;
+		Event Player.AG = False;
+	}
+}
+
+rule("z-axis fixed")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Z Component Of(Position Of(Event Player)) < 18.500;
+		Event Player.AP == False;
+	}
+
+	actions
+	{
+		Apply Impulse(Event Player, Vector(0, 0.200, 1), 5, To World, Cancel Contrary Motion);
+		Wait(0.100, Ignore Condition);
+		Loop If Condition Is True;
+	}
+}
+
+rule("player left")
+{
+	event
+	{
+		Player Left Match;
+		All;
+		All;
+	}
+
+	actions
+	{
+		If(Event Player == (Global.N ? Global.A : Global.P));
+			Set Match Time(0);
+			If(!Global.AA);
+				Global.AG = True;
+			End;
+		End;
+		Modify Global Variable(AC, Remove From Array By Value, Event Player);
+		If(Number Of Players(All Teams) < 2);
+			Restart Match;
+		End;
+	}
+}
+
+rule("draw within 20 seconds")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Event Player.S == True;
+		Event Player.B == False;
+		Match Time == True;
+		Count Of(Global.AC) > 1;
+	}
+
+	actions
+	{
+		Wait(10, Abort When False);
+		Small Message(Event Player, Custom String("If you do not draw within 10 seconds, the game will end."));
+		Play Effect(Event Player, Explosion Sound, Color(White), Vector(0, 10, 5), 50);
+		Wait(10, Abort When False);
+		Set Match Time(0);
+		Small Message(All Players(All Teams), Custom String("The artist did not draw within the required 20 seconds."));
+		Global.AG = True;
+	}
+}
+
+rule("prohibit wall riding")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Is On Wall(Event Player) == True;
+	}
+
+	actions
+	{
+		Apply Impulse(Event Player, Backward, 20, To World, Cancel Contrary Motion);
+		Press Button(Event Player, Button(Jump));
+		Disallow Button(Event Player, Button(Jump));
+		Wait Until(Is On Ground(Event Player), 99999);
+		Allow Button(Event Player, Button(Jump));
+	}
+}
+
+rule("end to end")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Absolute Value(X Component Of(Position Of(Event Player))) > 18;
+	}
+
+	actions
+	{
+		Teleport(Event Player, Position Of(Event Player) * Vector(-1, 1, 1));
+	}
+}
+
+rule("phase out by crouch")
+{
+	event
+	{
+		Ongoing - Each Player;
+		All;
+		All;
+	}
+
+	conditions
+	{
+		Has Spawned(Event Player) == True;
+		Is Button Held(Event Player, Button(Crouch)) != Event Player.AS;
+	}
+
+	actions
+	{
+		Event Player.AS = !Event Player.AS;
+		If(Event Player.AS);
+			Set Status(Event Player, Null, Phased Out, 9999);
+		Else;
+			Clear Status(Event Player, Phased Out);
+		End;
+	}
+}
