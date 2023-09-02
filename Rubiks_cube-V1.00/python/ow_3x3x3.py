@@ -22,6 +22,13 @@ goes through all 6 row by row down all the columns.
 """
 
 
+# TODO
+# - fix up bot positions
+# - maybe  change camera angle? press button to change, to each face?
+# - maybe add inverse? ( prob not, just leave as x3 moves)
+# - think about hud and stuff
+
+
 from enum import Enum
 # create 54  variables for each of the 54 spaces for 6 sides - 
 class cubie:
@@ -259,20 +266,18 @@ def white_front(findex):
     color = str("White");
     face = "Front_";
     
-    const = 0; # should be x value of 0, on the x plane @ 0 - front face
+    const = -0.1; # should be x value of 0, on the x plane @ 0 - front face
     
     #initial starting point top left corner
     row = [0, 3, 3.5, 6.5, 7, 10]; # z values
     col = [20, 17, 16.5, 13.5, 13, 10]; # y values
 
     white_vector = print_vector(color, const, col, row);
-
-##    white_vector = print_vector(color, const, col, row);
-    print("white  " , white_vector);
+    print("\nwhite  " , white_vector);
     print("\n");
 
     # color, face
-##    return create_face(color, face, findex, white_vector);
+    return create_face(color, face, findex, white_vector);
 
     # can now use white face vector to do some maths
 
@@ -287,20 +292,19 @@ def white_front(findex):
 def black_back(findex):    
     color = str("Black");       
     face = "Back_";
-    const = 10; # should be x value of 10, on the x plane @ 10 - back face
+    const = 10.1; # should be x value of 10, on the x plane @ 10 - back face
     
     #initial starting point top left corner
     #row = [0, 3, 3.5, 6.5, 7, 10]; # z values
     row = [10, 7, 6.5, 3.5, 3, 0]; # z values
     col = [20, 17, 16.5, 13.5, 13, 10]; # y values
 
-   # black_vector = create_vector(color, const, col, row);
 
     black_vector = print_vector(color, const, col, row);
-    print("black  "  ,black_vector);
+    print("\nblack  "  ,black_vector);
     print("\n");
 
-##    return create_face(color, face, findex, black_vector);
+    return create_face(color, face, findex, black_vector);
 
     # can now use white face vector to do some maths
 ##########################################################################################################################
@@ -310,19 +314,19 @@ def orange_left(findex):
     color = str("Orange");
     face = "Left_";
 
-    const = 0 ; # should be z value of 0 on z plane - the left face
+    const = -0.01 ; # should be z value of 0 on z plane - the left face
 
+# need to change these values, a slight difference. these are the corner pieces.
     #row = [0, 3, 3.5, 6.5, 7, 10]; # x values
     row = [10, 7, 6.5, 3.5, 3, 0]; # x values
     col = [20, 17, 16.5, 13.5, 13, 10]; # y values
 
-##    orange_vector = create_vector(color, const, col, row);
 
     orange_vector = print_vector(color, const, col, row);
-    print("orange  "  ,orange_vector);
+    print("\norange  "  ,orange_vector);
     print("\n");
 
-##    return create_face(color,face, findex, orange_vector);
+    return create_face(color,face, findex, orange_vector);
     
 ##########################################################################################################################
 ### RIGHT RED FACE
@@ -331,18 +335,16 @@ def right_red(findex):
     color = str("Red");
     face = "Right_";
 
-    const = 10 ; # should be z value of 10 on z plane- the right face
+    const = 10.09 ; # should be z value of 10 on z plane- the right face
 
     row = [0, 3, 3.5, 6.5, 7, 10]; # x values
     col = [20, 17, 16.5, 13.5, 13, 10]; # y values
 
-##    red_vector = create_vector(color, const, col, row);
-
     red_vector = print_vector(color, const, col, row);
-    print("red  "  ,red_vector);
+    print("\nred  "  ,red_vector);
     print("\n");
 
-##    return create_face(color, face, findex, red_vector);
+    return create_face(color, face, findex, red_vector);
 
 ##########################################################################################################################
 ### DOWN GREEN FACE
@@ -351,17 +353,15 @@ def green_down(findex):
     color = str("Green");
     face = "Down_";
 
-    const = 10; # should be y value of 10 on y plane - the bottom face
+    const = 9.9; # should be y value of 10 on y plane - the bottom face
     row = [0, 3, 3.5, 6.5, 7, 10]; # z values
     col = [0, 3, 3.5, 6.5, 7, 10]; # x values
 
-##    green_vector = create_vector(color, const, col, row);
-
     green_vector = print_vector(color, const, col, row);
-    print("green  "  ,green_vector);
+    print("\ngreen  "  ,green_vector);
     print("\n");
 
-##    return create_face(color, face, findex, green_vector);
+    return create_face(color, face, findex, green_vector);
 
     # can now use green face vector for maths
 ##########################################################################################################################
@@ -371,17 +371,16 @@ def blue_up(findex):
     color = str("Blue");
     face = "Up_";
 
-    const = 20; # should be y value of 20 on y plane - the top face
+    const = 20.1; # should be y value of 20 on y plane - the top face
     row = [0, 3, 3.5, 6.5, 7, 10]; # z values
     col = [10, 7, 6.5, 3.5, 3, 0]; # x values
 
-##    blue_vector = create_vector(color, const, col, row);
 
     blue_vector = print_vector(color, const, col, row);
-    print("blue  "  , blue_vector);
+    print("\nblue  "  , blue_vector);
     print("\n");
 
-##    return create_face(color, face, findex, blue_vector);
+    return create_face(color, face, findex, blue_vector);
 
     # can now use green face vector for maths
         
@@ -488,11 +487,11 @@ def main():
     # variables_set();
     face_index = 0
 
-    mcolor = "White"
-    mconst = 0 
-  #initial starting point top left corner
-    mrow = [0, 3, 3.5, 6.5, 7, 10]; # z values
-    mcol = [20, 17, 16.5, 13.5, 13, 10]; # y values
+##    mcolor = "White"
+##    mconst = 0 
+##  #initial starting point top left corner
+##    mrow = [0, 3, 3.5, 6.5, 7, 10]; # z values
+##    mcol = [20, 17, 16.5, 13.5, 13, 10]; # y values
 
     
     #print(print_vector(mcolor, mconst, mcol, mrow));
@@ -501,22 +500,22 @@ def main():
     # create some beams, like the white face 
     #print("\""+ comment + "\""); # should print out "comment here":
 
-    white_front(face_index);
-    green_down(face_index);
-    orange_left(face_index);    
-    right_red(face_index);
-    blue_up(face_index);
-    black_back(face_index);
+##    white_front(face_index);
+##    green_down(face_index);
+##    orange_left(face_index);    
+##    right_red(face_index);
+##    blue_up(face_index);
+##    black_back(face_index);
 
     
 ##    
 ##    face_index = white_front(face_index);
 ##    face_index = green_down(face_index);
 ##    face_index = orange_left(face_index);
-##    face_index = 108
-##    face_index = right_red(face_index);
-##    face_index = blue_up(face_index);
-##    face_index = black_back(face_index);
+    face_index = 108
+    face_index = right_red(face_index);
+    face_index = blue_up(face_index);
+    face_index = black_back(face_index);
 
 
 ##########################################################################################################################

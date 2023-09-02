@@ -59,7 +59,7 @@ variables
         55: Cube_coords        
 }   
 
-rule("START try 3x3x3 white, green, orange -python script with modify an array and constants fixed")
+rule("START try 3x3x3 white, green, orange -python script with modify an array and constants fixed, no overlaps")
 {
 	event
 	{
@@ -74,10 +74,10 @@ rule("START try 3x3x3 white, green, orange -python script with modify an array a
 	actions
 	{
         "White 1"
-Modify Global Variable(Front_1, Append To Array, Vector(0, 20, 0));
-Modify Global Variable(Front_1, Append To Array, Vector(0, 20, 3));
-Modify Global Variable(Front_1, Append To Array, Vector(0, 17, 3));
-Modify Global Variable(Front_1, Append To Array, Vector(0, 17, 0));
+Modify Global Variable(Front_1, Append To Array, Vector(-0.1, 20, 0));
+Modify Global Variable(Front_1, Append To Array, Vector(-0.1, 20, 3));
+Modify Global Variable(Front_1, Append To Array, Vector(-0.1, 17, 3));
+Modify Global Variable(Front_1, Append To Array, Vector(-0.1, 17, 0));
 "1 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Front_1[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Front_1[2]);
@@ -87,25 +87,26 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[1], Glo
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[1], Global.Cube_coords[4], Color(White), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[3], Global.Cube_coords[2], Color(White), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[3], Global.Cube_coords[4], Color(White), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[5], Global.Cube_coords[6], Color(White), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[5], Global.Cube_coords[8], Color(White), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[7], Global.Cube_coords[6], Color(White), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[7], Global.Cube_coords[8], Color(White), Visible To Position and Radius);
 "White 2"
-Modify Global Variable(Front_2, Append To Array, Vector(0, 20, 3.5));
-Modify Global Variable(Front_2, Append To Array, Vector(0, 20, 6.5));
-Modify Global Variable(Front_2, Append To Array, Vector(0, 17, 6.5));
-Modify Global Variable(Front_2, Append To Array, Vector(0, 17, 3.5));
+Modify Global Variable(Front_2, Append To Array, Vector(-0.1, 20, 3.5));
+Modify Global Variable(Front_2, Append To Array, Vector(-0.1, 20, 6.5));
+Modify Global Variable(Front_2, Append To Array, Vector(-0.1, 17, 6.5));
+Modify Global Variable(Front_2, Append To Array, Vector(-0.1, 17, 3.5));
 "2 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Front_2[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Front_2[2]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Front_2[3]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Front_2[4]);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[5], Global.Cube_coords[6], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[5], Global.Cube_coords[8], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[7], Global.Cube_coords[6], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[7], Global.Cube_coords[8], Color(White), Visible To Position and Radius);
+
 "White 3"
-Modify Global Variable(Front_3, Append To Array, Vector(0, 20, 7));
-Modify Global Variable(Front_3, Append To Array, Vector(0, 20, 10));
-Modify Global Variable(Front_3, Append To Array, Vector(0, 17, 10));
-Modify Global Variable(Front_3, Append To Array, Vector(0, 17, 7));
+Modify Global Variable(Front_3, Append To Array, Vector(-0.1, 20, 7));
+Modify Global Variable(Front_3, Append To Array, Vector(-0.1, 20, 10));
+Modify Global Variable(Front_3, Append To Array, Vector(-0.1, 17, 10));
+Modify Global Variable(Front_3, Append To Array, Vector(-0.1, 17, 7));
 "3 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Front_3[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Front_3[2]);
@@ -116,10 +117,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[9], Glo
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[11], Global.Cube_coords[10], Color(White), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[11], Global.Cube_coords[12], Color(White), Visible To Position and Radius);
 "White 4"
-Modify Global Variable(Front_4, Append To Array, Vector(0, 16.5, 0));
-Modify Global Variable(Front_4, Append To Array, Vector(0, 16.5, 3));
-Modify Global Variable(Front_4, Append To Array, Vector(0, 13.5, 3));
-Modify Global Variable(Front_4, Append To Array, Vector(0, 13.5, 0));
+Modify Global Variable(Front_4, Append To Array, Vector(-0.1, 16.5, 0));
+Modify Global Variable(Front_4, Append To Array, Vector(-0.1, 16.5, 3));
+Modify Global Variable(Front_4, Append To Array, Vector(-0.1, 13.5, 3));
+Modify Global Variable(Front_4, Append To Array, Vector(-0.1, 13.5, 0));
 "4 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Front_4[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Front_4[2]);
@@ -130,10 +131,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[13], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[15], Global.Cube_coords[14], Color(White), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[15], Global.Cube_coords[16], Color(White), Visible To Position and Radius);
 "White 5"
-Modify Global Variable(Front_5, Append To Array, Vector(0, 16.5, 3.5));
-Modify Global Variable(Front_5, Append To Array, Vector(0, 16.5, 6.5));
-Modify Global Variable(Front_5, Append To Array, Vector(0, 13.5, 6.5));
-Modify Global Variable(Front_5, Append To Array, Vector(0, 13.5, 3.5));
+Modify Global Variable(Front_5, Append To Array, Vector(-0.1, 16.5, 3.5));
+Modify Global Variable(Front_5, Append To Array, Vector(-0.1, 16.5, 6.5));
+Modify Global Variable(Front_5, Append To Array, Vector(-0.1, 13.5, 6.5));
+Modify Global Variable(Front_5, Append To Array, Vector(-0.1, 13.5, 3.5));
 "5 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Front_5[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Front_5[2]);
@@ -144,10 +145,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[17], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[19], Global.Cube_coords[18], Color(White), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[19], Global.Cube_coords[20], Color(White), Visible To Position and Radius);
 "White 6"
-Modify Global Variable(Front_6, Append To Array, Vector(0, 16.5, 7));
-Modify Global Variable(Front_6, Append To Array, Vector(0, 16.5, 10));
-Modify Global Variable(Front_6, Append To Array, Vector(0, 13.5, 10));
-Modify Global Variable(Front_6, Append To Array, Vector(0, 13.5, 7));
+Modify Global Variable(Front_6, Append To Array, Vector(-0.1, 16.5, 7));
+Modify Global Variable(Front_6, Append To Array, Vector(-0.1, 16.5, 10));
+Modify Global Variable(Front_6, Append To Array, Vector(-0.1, 13.5, 10));
+Modify Global Variable(Front_6, Append To Array, Vector(-0.1, 13.5, 7));
 "6 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Front_6[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Front_6[2]);
@@ -158,10 +159,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[21], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[23], Global.Cube_coords[22], Color(White), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[23], Global.Cube_coords[24], Color(White), Visible To Position and Radius);
 "White 7"
-Modify Global Variable(Front_7, Append To Array, Vector(0, 13, 0));
-Modify Global Variable(Front_7, Append To Array, Vector(0, 13, 3));
-Modify Global Variable(Front_7, Append To Array, Vector(0, 10, 3));
-Modify Global Variable(Front_7, Append To Array, Vector(0, 10, 0));
+Modify Global Variable(Front_7, Append To Array, Vector(-0.1, 13, 0));
+Modify Global Variable(Front_7, Append To Array, Vector(-0.1, 13, 3));
+Modify Global Variable(Front_7, Append To Array, Vector(-0.1, 10, 3));
+Modify Global Variable(Front_7, Append To Array, Vector(-0.1, 10, 0));
 "7 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Front_7[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Front_7[2]);
@@ -172,10 +173,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[25], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[27], Global.Cube_coords[26], Color(White), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[27], Global.Cube_coords[28], Color(White), Visible To Position and Radius);
 "White 8"
-Modify Global Variable(Front_8, Append To Array, Vector(0, 13, 3.5));
-Modify Global Variable(Front_8, Append To Array, Vector(0, 13, 6.5));
-Modify Global Variable(Front_8, Append To Array, Vector(0, 10, 6.5));
-Modify Global Variable(Front_8, Append To Array, Vector(0, 10, 3.5));
+Modify Global Variable(Front_8, Append To Array, Vector(-0.1, 13, 3.5));
+Modify Global Variable(Front_8, Append To Array, Vector(-0.1, 13, 6.5));
+Modify Global Variable(Front_8, Append To Array, Vector(-0.1, 10, 6.5));
+Modify Global Variable(Front_8, Append To Array, Vector(-0.1, 10, 3.5));
 "8 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Front_8[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Front_8[2]);
@@ -186,10 +187,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[29], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[31], Global.Cube_coords[30], Color(White), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[31], Global.Cube_coords[32], Color(White), Visible To Position and Radius);
 "White 9"
-Modify Global Variable(Front_9, Append To Array, Vector(0, 13, 7));
-Modify Global Variable(Front_9, Append To Array, Vector(0, 13, 10));
-Modify Global Variable(Front_9, Append To Array, Vector(0, 10, 10));
-Modify Global Variable(Front_9, Append To Array, Vector(0, 10, 7));
+Modify Global Variable(Front_9, Append To Array, Vector(-0.1, 13, 7));
+Modify Global Variable(Front_9, Append To Array, Vector(-0.1, 13, 10));
+Modify Global Variable(Front_9, Append To Array, Vector(-0.1, 10, 10));
+Modify Global Variable(Front_9, Append To Array, Vector(-0.1, 10, 7));
 "9 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Front_9[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Front_9[2]);
@@ -199,11 +200,13 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[33], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[33], Global.Cube_coords[36], Color(White), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[35], Global.Cube_coords[34], Color(White), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[35], Global.Cube_coords[36], Color(White), Visible To Position and Radius);
+
+
 "Green 1"
-Modify Global Variable(Down_1, Append To Array, Vector(0, 10, 0));
-Modify Global Variable(Down_1, Append To Array, Vector(0, 10, 3));
-Modify Global Variable(Down_1, Append To Array, Vector(3, 10, 3));
-Modify Global Variable(Down_1, Append To Array, Vector(3, 10, 0));
+Modify Global Variable(Down_1, Append To Array, Vector(0, 9.9, 0));
+Modify Global Variable(Down_1, Append To Array, Vector(0, 9.9, 3));
+Modify Global Variable(Down_1, Append To Array, Vector(3, 9.9, 3));
+Modify Global Variable(Down_1, Append To Array, Vector(3, 9.9, 0));
 "1 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Down_1[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Down_1[2]);
@@ -214,10 +217,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[37], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[39], Global.Cube_coords[38], Color(Green), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[39], Global.Cube_coords[40], Color(Green), Visible To Position and Radius);
 "Green 2"
-Modify Global Variable(Down_2, Append To Array, Vector(0, 10, 3.5));
-Modify Global Variable(Down_2, Append To Array, Vector(0, 10, 6.5));
-Modify Global Variable(Down_2, Append To Array, Vector(3, 10, 6.5));
-Modify Global Variable(Down_2, Append To Array, Vector(3, 10, 3.5));
+Modify Global Variable(Down_2, Append To Array, Vector(0, 9.9, 3.5));
+Modify Global Variable(Down_2, Append To Array, Vector(0, 9.9, 6.5));
+Modify Global Variable(Down_2, Append To Array, Vector(3, 9.9, 6.5));
+Modify Global Variable(Down_2, Append To Array, Vector(3, 9.9, 3.5));
 "2 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Down_2[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Down_2[2]);
@@ -228,10 +231,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[41], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[43], Global.Cube_coords[42], Color(Green), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[43], Global.Cube_coords[44], Color(Green), Visible To Position and Radius);
 "Green 3"
-Modify Global Variable(Down_3, Append To Array, Vector(0, 10, 7));
-Modify Global Variable(Down_3, Append To Array, Vector(0, 10, 10));
-Modify Global Variable(Down_3, Append To Array, Vector(3, 10, 10));
-Modify Global Variable(Down_3, Append To Array, Vector(3, 10, 7));
+Modify Global Variable(Down_3, Append To Array, Vector(0, 9.9, 7));
+Modify Global Variable(Down_3, Append To Array, Vector(0, 9.9, 10));
+Modify Global Variable(Down_3, Append To Array, Vector(3, 9.9, 10));
+Modify Global Variable(Down_3, Append To Array, Vector(3, 9.9, 7));
 "3 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Down_3[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Down_3[2]);
@@ -242,10 +245,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[45], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[47], Global.Cube_coords[46], Color(Green), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[47], Global.Cube_coords[48], Color(Green), Visible To Position and Radius);
 "Green 4"
-Modify Global Variable(Down_4, Append To Array, Vector(3.5, 10, 0));
-Modify Global Variable(Down_4, Append To Array, Vector(3.5, 10, 3));
-Modify Global Variable(Down_4, Append To Array, Vector(6.5, 10, 3));
-Modify Global Variable(Down_4, Append To Array, Vector(6.5, 10, 0));
+Modify Global Variable(Down_4, Append To Array, Vector(3.5, 9.9, 0));
+Modify Global Variable(Down_4, Append To Array, Vector(3.5, 9.9, 3));
+Modify Global Variable(Down_4, Append To Array, Vector(6.5, 9.9, 3));
+Modify Global Variable(Down_4, Append To Array, Vector(6.5, 9.9, 0));
 "4 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Down_4[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Down_4[2]);
@@ -256,10 +259,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[49], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[51], Global.Cube_coords[50], Color(Green), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[51], Global.Cube_coords[52], Color(Green), Visible To Position and Radius);
 "Green 5"
-Modify Global Variable(Down_5, Append To Array, Vector(3.5, 10, 3.5));
-Modify Global Variable(Down_5, Append To Array, Vector(3.5, 10, 6.5));
-Modify Global Variable(Down_5, Append To Array, Vector(6.5, 10, 6.5));
-Modify Global Variable(Down_5, Append To Array, Vector(6.5, 10, 3.5));
+Modify Global Variable(Down_5, Append To Array, Vector(3.5, 9.9, 3.5));
+Modify Global Variable(Down_5, Append To Array, Vector(3.5, 9.9, 6.5));
+Modify Global Variable(Down_5, Append To Array, Vector(6.5, 9.9, 6.5));
+Modify Global Variable(Down_5, Append To Array, Vector(6.5, 9.9, 3.5));
 "5 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Down_5[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Down_5[2]);
@@ -270,10 +273,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[53], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[55], Global.Cube_coords[54], Color(Green), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[55], Global.Cube_coords[56], Color(Green), Visible To Position and Radius);
 "Green 6"
-Modify Global Variable(Down_6, Append To Array, Vector(3.5, 10, 7));
-Modify Global Variable(Down_6, Append To Array, Vector(3.5, 10, 10));
-Modify Global Variable(Down_6, Append To Array, Vector(6.5, 10, 10));
-Modify Global Variable(Down_6, Append To Array, Vector(6.5, 10, 7));
+Modify Global Variable(Down_6, Append To Array, Vector(3.5, 9.9, 7));
+Modify Global Variable(Down_6, Append To Array, Vector(3.5, 9.9, 10));
+Modify Global Variable(Down_6, Append To Array, Vector(6.5, 9.9, 10));
+Modify Global Variable(Down_6, Append To Array, Vector(6.5, 9.9, 7));
 "6 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Down_6[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Down_6[2]);
@@ -284,10 +287,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[57], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[59], Global.Cube_coords[58], Color(Green), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[59], Global.Cube_coords[60], Color(Green), Visible To Position and Radius);
 "Green 7"
-Modify Global Variable(Down_7, Append To Array, Vector(7, 10, 0));
-Modify Global Variable(Down_7, Append To Array, Vector(7, 10, 3));
-Modify Global Variable(Down_7, Append To Array, Vector(10, 10, 3));
-Modify Global Variable(Down_7, Append To Array, Vector(10, 10, 0));
+Modify Global Variable(Down_7, Append To Array, Vector(7, 9.9, 0));
+Modify Global Variable(Down_7, Append To Array, Vector(7, 9.9, 3));
+Modify Global Variable(Down_7, Append To Array, Vector(10, 9.9, 3));
+Modify Global Variable(Down_7, Append To Array, Vector(10, 9.9, 0));
 "7 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Down_7[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Down_7[2]);
@@ -298,10 +301,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[61], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[63], Global.Cube_coords[62], Color(Green), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[63], Global.Cube_coords[64], Color(Green), Visible To Position and Radius);
 "Green 8"
-Modify Global Variable(Down_8, Append To Array, Vector(7, 10, 3.5));
-Modify Global Variable(Down_8, Append To Array, Vector(7, 10, 6.5));
-Modify Global Variable(Down_8, Append To Array, Vector(10, 10, 6.5));
-Modify Global Variable(Down_8, Append To Array, Vector(10, 10, 3.5));
+Modify Global Variable(Down_8, Append To Array, Vector(7, 9.9, 3.5));
+Modify Global Variable(Down_8, Append To Array, Vector(7, 9.9, 6.5));
+Modify Global Variable(Down_8, Append To Array, Vector(10, 9.9, 6.5));
+Modify Global Variable(Down_8, Append To Array, Vector(10, 9.9, 3.5));
 "8 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Down_8[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Down_8[2]);
@@ -312,10 +315,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[65], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[67], Global.Cube_coords[66], Color(Green), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[67], Global.Cube_coords[68], Color(Green), Visible To Position and Radius);
 "Green 9"
-Modify Global Variable(Down_9, Append To Array, Vector(7, 10, 7));
-Modify Global Variable(Down_9, Append To Array, Vector(7, 10, 10));
-Modify Global Variable(Down_9, Append To Array, Vector(10, 10, 10));
-Modify Global Variable(Down_9, Append To Array, Vector(10, 10, 7));
+Modify Global Variable(Down_9, Append To Array, Vector(7, 9.9, 7));
+Modify Global Variable(Down_9, Append To Array, Vector(7, 9.9, 10));
+Modify Global Variable(Down_9, Append To Array, Vector(10, 9.9, 10));
+Modify Global Variable(Down_9, Append To Array, Vector(10, 9.9, 7));
 "9 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Down_9[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Down_9[2]);
@@ -325,11 +328,13 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[69], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[69], Global.Cube_coords[72], Color(Green), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[71], Global.Cube_coords[70], Color(Green), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[71], Global.Cube_coords[72], Color(Green), Visible To Position and Radius);
+
+
 "Orange 1"
-Modify Global Variable(Left_1, Append To Array, Vector(10, 20, 0));
-Modify Global Variable(Left_1, Append To Array, Vector(7, 20, 0));
-Modify Global Variable(Left_1, Append To Array, Vector(7, 17, 0));
-Modify Global Variable(Left_1, Append To Array, Vector(10, 17, 0));
+Modify Global Variable(Left_1, Append To Array, Vector(10, 20, -0.01));
+Modify Global Variable(Left_1, Append To Array, Vector(7, 20, -0.01));
+Modify Global Variable(Left_1, Append To Array, Vector(7, 17, -0.01));
+Modify Global Variable(Left_1, Append To Array, Vector(10, 17, -0.01));
 "1 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Left_1[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Left_1[2]);
@@ -340,10 +345,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[73], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[75], Global.Cube_coords[74], Color(Orange), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[75], Global.Cube_coords[76], Color(Orange), Visible To Position and Radius);
 "Orange 2"
-Modify Global Variable(Left_2, Append To Array, Vector(6.5, 20, 0));
-Modify Global Variable(Left_2, Append To Array, Vector(3.5, 20, 0));
-Modify Global Variable(Left_2, Append To Array, Vector(3.5, 17, 0));
-Modify Global Variable(Left_2, Append To Array, Vector(6.5, 17, 0));
+Modify Global Variable(Left_2, Append To Array, Vector(6.5, 20, -0.01));
+Modify Global Variable(Left_2, Append To Array, Vector(3.5, 20, -0.01));
+Modify Global Variable(Left_2, Append To Array, Vector(3.5, 17, -0.01));
+Modify Global Variable(Left_2, Append To Array, Vector(6.5, 17, -0.01));
 "2 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Left_2[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Left_2[2]);
@@ -354,10 +359,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[77], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[79], Global.Cube_coords[78], Color(Orange), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[79], Global.Cube_coords[80], Color(Orange), Visible To Position and Radius);
 "Orange 3"
-Modify Global Variable(Left_3, Append To Array, Vector(3, 20, 0));
-Modify Global Variable(Left_3, Append To Array, Vector(0, 20, 0));
-Modify Global Variable(Left_3, Append To Array, Vector(0, 17, 0));
-Modify Global Variable(Left_3, Append To Array, Vector(3, 17, 0));
+Modify Global Variable(Left_3, Append To Array, Vector(3, 20, -0.01));
+Modify Global Variable(Left_3, Append To Array, Vector(0, 20, -0.01));
+Modify Global Variable(Left_3, Append To Array, Vector(0, 17, -0.01));
+Modify Global Variable(Left_3, Append To Array, Vector(3, 17, -0.01));
 "3 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Left_3[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Left_3[2]);
@@ -368,10 +373,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[81], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[83], Global.Cube_coords[82], Color(Orange), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[83], Global.Cube_coords[84], Color(Orange), Visible To Position and Radius);
 "Orange 4"
-Modify Global Variable(Left_4, Append To Array, Vector(10, 16.5, 0));
-Modify Global Variable(Left_4, Append To Array, Vector(7, 16.5, 0));
-Modify Global Variable(Left_4, Append To Array, Vector(7, 13.5, 0));
-Modify Global Variable(Left_4, Append To Array, Vector(10, 13.5, 0));
+Modify Global Variable(Left_4, Append To Array, Vector(10, 16.5, -0.01));
+Modify Global Variable(Left_4, Append To Array, Vector(7, 16.5, -0.01));
+Modify Global Variable(Left_4, Append To Array, Vector(7, 13.5, -0.01));
+Modify Global Variable(Left_4, Append To Array, Vector(10, 13.5, -0.01));
 "4 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Left_4[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Left_4[2]);
@@ -382,10 +387,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[85], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[87], Global.Cube_coords[86], Color(Orange), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[87], Global.Cube_coords[88], Color(Orange), Visible To Position and Radius);
 "Orange 5"
-Modify Global Variable(Left_5, Append To Array, Vector(6.5, 16.5, 0));
-Modify Global Variable(Left_5, Append To Array, Vector(3.5, 16.5, 0));
-Modify Global Variable(Left_5, Append To Array, Vector(3.5, 13.5, 0));
-Modify Global Variable(Left_5, Append To Array, Vector(6.5, 13.5, 0));
+Modify Global Variable(Left_5, Append To Array, Vector(6.5, 16.5, -0.01));
+Modify Global Variable(Left_5, Append To Array, Vector(3.5, 16.5, -0.01));
+Modify Global Variable(Left_5, Append To Array, Vector(3.5, 13.5, -0.01));
+Modify Global Variable(Left_5, Append To Array, Vector(6.5, 13.5, -0.01));
 "5 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Left_5[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Left_5[2]);
@@ -396,10 +401,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[89], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[91], Global.Cube_coords[90], Color(Orange), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[91], Global.Cube_coords[92], Color(Orange), Visible To Position and Radius);
 "Orange 6"
-Modify Global Variable(Left_6, Append To Array, Vector(3, 16.5, 0));
-Modify Global Variable(Left_6, Append To Array, Vector(0, 16.5, 0));
-Modify Global Variable(Left_6, Append To Array, Vector(0, 13.5, 0));
-Modify Global Variable(Left_6, Append To Array, Vector(3, 13.5, 0));
+Modify Global Variable(Left_6, Append To Array, Vector(3, 16.5, -0.01));
+Modify Global Variable(Left_6, Append To Array, Vector(0, 16.5, -0.01));
+Modify Global Variable(Left_6, Append To Array, Vector(0, 13.5, -0.01));
+Modify Global Variable(Left_6, Append To Array, Vector(3, 13.5, -0.01));
 "6 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Left_6[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Left_6[2]);
@@ -410,10 +415,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[93], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[95], Global.Cube_coords[94], Color(Orange), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[95], Global.Cube_coords[96], Color(Orange), Visible To Position and Radius);
 "Orange 7"
-Modify Global Variable(Left_7, Append To Array, Vector(10, 13, 0));
-Modify Global Variable(Left_7, Append To Array, Vector(7, 13, 0));
-Modify Global Variable(Left_7, Append To Array, Vector(7, 10, 0));
-Modify Global Variable(Left_7, Append To Array, Vector(10, 10, 0));
+Modify Global Variable(Left_7, Append To Array, Vector(10, 13, -0.01));
+Modify Global Variable(Left_7, Append To Array, Vector(7, 13, -0.01));
+Modify Global Variable(Left_7, Append To Array, Vector(7, 10, -0.01));
+Modify Global Variable(Left_7, Append To Array, Vector(10, 10, -0.01));
 "7 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Left_7[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Left_7[2]);
@@ -424,10 +429,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[97], Gl
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[99], Global.Cube_coords[98], Color(Orange), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[99], Global.Cube_coords[100], Color(Orange), Visible To Position and Radius);
 "Orange 8"
-Modify Global Variable(Left_8, Append To Array, Vector(6.5, 13, 0));
-Modify Global Variable(Left_8, Append To Array, Vector(3.5, 13, 0));
-Modify Global Variable(Left_8, Append To Array, Vector(3.5, 10, 0));
-Modify Global Variable(Left_8, Append To Array, Vector(6.5, 10, 0));
+Modify Global Variable(Left_8, Append To Array, Vector(6.5, 13, -0.01));
+Modify Global Variable(Left_8, Append To Array, Vector(3.5, 13, -0.01));
+Modify Global Variable(Left_8, Append To Array, Vector(3.5, 10, -0.01));
+Modify Global Variable(Left_8, Append To Array, Vector(6.5, 10, -0.01));
 "8 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Left_8[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Left_8[2]);
@@ -438,10 +443,10 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[101], G
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[103], Global.Cube_coords[102], Color(Orange), Visible To Position and Radius);
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[103], Global.Cube_coords[104], Color(Orange), Visible To Position and Radius);
 "Orange 9"
-Modify Global Variable(Left_9, Append To Array, Vector(3, 13, 0));
-Modify Global Variable(Left_9, Append To Array, Vector(0, 13, 0));
-Modify Global Variable(Left_9, Append To Array, Vector(0, 10, 0));
-Modify Global Variable(Left_9, Append To Array, Vector(3, 10, 0));
+Modify Global Variable(Left_9, Append To Array, Vector(3, 13, -0.01));
+Modify Global Variable(Left_9, Append To Array, Vector(0, 13, -0.01));
+Modify Global Variable(Left_9, Append To Array, Vector(0, 10, -0.01));
+Modify Global Variable(Left_9, Append To Array, Vector(3, 10, -0.01));
 "9 sequence started"
 Modify Global Variable(Cube_coords, Append To Array, Global.Left_9[1]);
 Modify Global Variable(Cube_coords, Append To Array, Global.Left_9[2]);
@@ -453,11 +458,30 @@ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[107], G
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[107], Global.Cube_coords[108], Color(Orange), Visible To Position and Radius);
 
 
+
     }
 }
 
 
 
+/* 
+
+
+rule("START try 3x3x3 starting positions")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	conditions
+	{
+		Is Game In Progress == True;
+	}
+
+	actions
+	{
+        
 "White 1"
 Modify Global Variable(Front_1, Append To Array, Vector(0, 20, 0));
 Modify Global Variable(Front_1, Append To Array, Vector(0, 20, 3));
@@ -595,48 +619,173 @@ Modify Global Variable(Cube_coords, Append To Array, Global.Back_2[4]);
 
 
 
-        Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[5], Global.Cube_coords[6], Color(White), Visible To Position and Radius);
-        Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[5], Global.Cube_coords[8], Color(White), Visible To Position and Radius);
-        Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[7], Global.Cube_coords[6], Color(White), Visible To Position and Radius);
-        Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[7], Global.Cube_coords[8], Color(White), Visible To Position and Radius);
-        Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[9], Global.Cube_coords[10], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[9], Global.Cube_coords[12], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[11], Global.Cube_coords[10], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[11], Global.Cube_coords[12], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[13], Global.Cube_coords[14], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[13], Global.Cube_coords[16], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[15], Global.Cube_coords[14], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[15], Global.Cube_coords[16], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[17], Global.Cube_coords[18], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[17], Global.Cube_coords[20], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[19], Global.Cube_coords[18], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[19], Global.Cube_coords[20], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[21], Global.Cube_coords[22], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[21], Global.Cube_coords[24], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[23], Global.Cube_coords[22], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[23], Global.Cube_coords[24], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[25], Global.Cube_coords[26], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[25], Global.Cube_coords[28], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[27], Global.Cube_coords[26], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[27], Global.Cube_coords[28], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[29], Global.Cube_coords[30], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[29], Global.Cube_coords[32], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[31], Global.Cube_coords[30], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[31], Global.Cube_coords[32], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[33], Global.Cube_coords[34], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[33], Global.Cube_coords[36], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[35], Global.Cube_coords[34], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[35], Global.Cube_coords[36], Color(White), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[37], Global.Cube_coords[38], Color(Green), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[37], Global.Cube_coords[40], Color(Green), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[39], Global.Cube_coords[38], Color(Green), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[39], Global.Cube_coords[40], Color(Green), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[41], Global.Cube_coords[42], Color(Green), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[41], Global.Cube_coords[44], Color(Green), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[43], Global.Cube_coords[42], Color(Green), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[43], Global.Cube_coords[44], Color(Green), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[45], Global.Cube_coords[46], Color(Green), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[45], Global.Cube_coords[48], Color(Green), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[47], Global.Cube_coords[46], Color(Green), Visible To Position and Radius);
-Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[47], Global.Cube_coords[48], Color(Green), Visible To Position and Radius);
+  Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[5], Global.Cube_coords[6], Color(White), Visible To Position and Radius);
+  Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[5], Global.Cube_coords[8], Color(White), Visible To Position and Radius);
+  Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[7], Global.Cube_coords[6], Color(White), Visible To Position and Radius);
+  Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[7], Global.Cube_coords[8], Color(White), Visible To Position and Radius);
+ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[9], Global.Cube_coords[10], Color(Green), Visible To Position and Radius);
+ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[9], Global.Cube_coords[12], Color(Green), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[11], Global.Cube_coords[10], Color(Green), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[11], Global.Cube_coords[12], Color(Green), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[13], Global.Cube_coords[14], Color(Green), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[13], Global.Cube_coords[16], Color(Green), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[15], Global.Cube_coords[14], Color(Green), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[15], Global.Cube_coords[16], Color(Green), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[17], Global.Cube_coords[18], Color(Orange), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[17], Global.Cube_coords[20], Color(Orange), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[19], Global.Cube_coords[18], Color(Orange), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[19], Global.Cube_coords[20], Color(Orange), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[21], Global.Cube_coords[22], Color(Orange), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[21], Global.Cube_coords[24], Color(Orange), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[23], Global.Cube_coords[22], Color(Orange), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[23], Global.Cube_coords[24], Color(Orange), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[25], Global.Cube_coords[26], Color(Red), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[25], Global.Cube_coords[28], Color(Red), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[27], Global.Cube_coords[26], Color(Red), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[27], Global.Cube_coords[28], Color(Red), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[29], Global.Cube_coords[30], Color(Red), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[29], Global.Cube_coords[32], Color(Red), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[31], Global.Cube_coords[30], Color(Red), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[31], Global.Cube_coords[32], Color(Red), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[33], Global.Cube_coords[34], Color(Blue), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[33], Global.Cube_coords[36], Color(Blue), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[35], Global.Cube_coords[34], Color(Blue), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[35], Global.Cube_coords[36], Color(Blue), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[37], Global.Cube_coords[38], Color(Blue), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[37], Global.Cube_coords[40], Color(Blue), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[39], Global.Cube_coords[38], Color(Blue), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[39], Global.Cube_coords[40], Color(Blue), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[41], Global.Cube_coords[42], Color(Black), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[41], Global.Cube_coords[44], Color(Black), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[43], Global.Cube_coords[42], Color(Black), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[43], Global.Cube_coords[44], Color(Black), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[45], Global.Cube_coords[46], Color(Black), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[45], Global.Cube_coords[48], Color(Black), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[47], Global.Cube_coords[46], Color(Black), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[47], Global.Cube_coords[48], Color(Black), Visible To Position and Radius);
 
+
+    }
+}
+ */
+
+
+ /* 
+
+
+rule("START try 3x3x3 starting positions")
+{
+	event
+	{
+		Ongoing - Global;
+	}
+
+	conditions
+	{
+		Is Game In Progress == True;
+	}
+
+	actions
+	{
+        
+"White 1"
+Modify Global Variable(Front_1, Append To Array, Vector(0, 20, 0));
+Modify Global Variable(Front_1, Append To Array, Vector(0, 20, 3));
+Modify Global Variable(Front_1, Append To Array, Vector(0, 17, 3));
+Modify Global Variable(Front_1, Append To Array, Vector(0, 17, 0));
+"1 sequence started"
+Modify Global Variable(Cube_coords, Append To Array, Global.Front_1[1]);
+Modify Global Variable(Cube_coords, Append To Array, Global.Front_1[2]);
+Modify Global Variable(Cube_coords, Append To Array, Global.Front_1[3]);
+Modify Global Variable(Cube_coords, Append To Array, Global.Front_1[4]);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[1], Global.Cube_coords[2], Color(White), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[1], Global.Cube_coords[4], Color(White), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[3], Global.Cube_coords[2], Color(White), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[3], Global.Cube_coords[4], Color(White), Visible To Position and Radius);
+
+
+"Green 1"
+Modify Global Variable(Down_1, Append To Array, Vector(0, 10, 0));
+Modify Global Variable(Down_1, Append To Array, Vector(0, 10, 3));
+Modify Global Variable(Down_1, Append To Array, Vector(3, 10, 3));
+Modify Global Variable(Down_1, Append To Array, Vector(3, 10, 0));
+"1 sequence started"
+Modify Global Variable(Cube_coords, Append To Array, Global.Down_1[1]);
+Modify Global Variable(Cube_coords, Append To Array, Global.Down_1[2]);
+Modify Global Variable(Cube_coords, Append To Array, Global.Down_1[3]);
+Modify Global Variable(Cube_coords, Append To Array, Global.Down_1[4]);
+
+
+"Orange 1"
+Modify Global Variable(Left_1, Append To Array, Vector(10, 20, 0));
+Modify Global Variable(Left_1, Append To Array, Vector(7, 20, 0));
+Modify Global Variable(Left_1, Append To Array, Vector(7, 17, 0));
+Modify Global Variable(Left_1, Append To Array, Vector(10, 17, 0));
+"1 sequence started"
+Modify Global Variable(Cube_coords, Append To Array, Global.Left_1[1]);
+Modify Global Variable(Cube_coords, Append To Array, Global.Left_1[2]);
+Modify Global Variable(Cube_coords, Append To Array, Global.Left_1[3]);
+Modify Global Variable(Cube_coords, Append To Array, Global.Left_1[4]);
+
+
+"Red 1"
+Modify Global Variable(Right_1, Append To Array, Vector(0, 20, 10));
+Modify Global Variable(Right_1, Append To Array, Vector(3, 20, 10));
+Modify Global Variable(Right_1, Append To Array, Vector(3, 17, 10));
+Modify Global Variable(Right_1, Append To Array, Vector(0, 17, 10));
+"1 sequence started"
+Modify Global Variable(Cube_coords, Append To Array, Global.Right_1[1]);
+Modify Global Variable(Cube_coords, Append To Array, Global.Right_1[2]);
+Modify Global Variable(Cube_coords, Append To Array, Global.Right_1[3]);
+Modify Global Variable(Cube_coords, Append To Array, Global.Right_1[4]);
+
+
+"Blue 1"
+Modify Global Variable(Up_1, Append To Array, Vector(10, 20, 0));
+Modify Global Variable(Up_1, Append To Array, Vector(10, 20, 3));
+Modify Global Variable(Up_1, Append To Array, Vector(7, 20, 3));
+Modify Global Variable(Up_1, Append To Array, Vector(7, 20, 0));
+"1 sequence started"
+Modify Global Variable(Cube_coords, Append To Array, Global.Up_1[1]);
+Modify Global Variable(Cube_coords, Append To Array, Global.Up_1[2]);
+Modify Global Variable(Cube_coords, Append To Array, Global.Up_1[3]);
+Modify Global Variable(Cube_coords, Append To Array, Global.Up_1[4]);
+
+
+"Black 1"
+Modify Global Variable(Back_1, Append To Array, Vector(10, 20, 10));
+Modify Global Variable(Back_1, Append To Array, Vector(10, 20, 7));
+Modify Global Variable(Back_1, Append To Array, Vector(10, 17, 7));
+Modify Global Variable(Back_1, Append To Array, Vector(10, 17, 10));
+"1 sequence started"
+Modify Global Variable(Cube_coords, Append To Array, Global.Back_1[1]);
+Modify Global Variable(Cube_coords, Append To Array, Global.Back_1[2]);
+Modify Global Variable(Cube_coords, Append To Array, Global.Back_1[3]);
+Modify Global Variable(Cube_coords, Append To Array, Global.Back_1[4]);
+
+
+
+
+  Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[5], Global.Cube_coords[6], Color(Green), Visible To Position and Radius);
+  Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[5], Global.Cube_coords[8], Color(Green), Visible To Position and Radius);
+  Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[7], Global.Cube_coords[6], Color(Green), Visible To Position and Radius);
+  Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[7], Global.Cube_coords[8], Color(Green), Visible To Position and Radius);
+ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[9], Global.Cube_coords[10], Color(Orange), Visible To Position and Radius);
+ Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[9], Global.Cube_coords[12], Color(Orange), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[11], Global.Cube_coords[10], Color(Orange), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[11], Global.Cube_coords[12], Color(Orange), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[13], Global.Cube_coords[14], Color(Red), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[13], Global.Cube_coords[16], Color(Red), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[15], Global.Cube_coords[14], Color(Red), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[15], Global.Cube_coords[16], Color(Red), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[17], Global.Cube_coords[18], Color(Blue), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[17], Global.Cube_coords[20], Color(Blue), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[19], Global.Cube_coords[18], Color(Blue), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[19], Global.Cube_coords[20], Color(Blue), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[21], Global.Cube_coords[22], Color(Black), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[21], Global.Cube_coords[24], Color(Black), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[23], Global.Cube_coords[22], Color(Black), Visible To Position and Radius);
+Create Beam Effect(All Players(All Teams), Good Beam, Global.Cube_coords[23], Global.Cube_coords[24], Color(Black), Visible To Position and Radius);
+    }
+}
+*/
