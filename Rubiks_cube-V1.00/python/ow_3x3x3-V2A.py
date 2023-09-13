@@ -1,24 +1,18 @@
 # attempt 2 at scripting a rubik's cube in ow workshop
-
 """
 Modify Global Variable(Front_1, Append To Array, Vector(0, 0, 0));
 Create Beam Effect(All Players(All Teams), Good Beam, Global.Front_1[0], Global.Front_1[1],
 Color(White), Visible To Position and Radius);
 """
 
-
-
 def modify(face, v):
     print("Modify Global Variable(" + face +", Append To Array, Vector(" + str(v[0]) + ", " + str(v[1]) + ", "+ str(v[2]) + ");");
-
 
 # pass in the variable name {Front_1}, array location?
 def Create_Beam( _color, start, end, face):
     #print("Create Beam Effect(All Players(All Teams), Good Beam, Vector(" + str(_vector_start[0]) + ", " + str(_vector_start[1]) + ", "+ str(_vector_start[2]) + "), Vector(" + str(_vector_end[0]) + ", " + str(_vector_end[1]) + ", " + str(_vector_end[2]) + "), Color(" + str(_color) + "), Visible To Position and Radius);");
     print("Create Beam Effect(All Players(All Teams), Good Beam, Global."+ face + "["+ str(start)+ "], Global."+ face +"["+ str(end) +"], \
     Color("+ _color+"), Visible To Position and Radius);");
-
-
 
 # coordinate 1 for F1
 init_face = "Front_1";
